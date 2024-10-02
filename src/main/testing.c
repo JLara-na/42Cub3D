@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 01:00:26 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/09/30 21:34:16 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/02 21:44:25 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -317,11 +317,11 @@ void	wasd(t_cub3d	*cub3d, int key)
 	}
 }
 
-void	lurd(t_cub3d	*cub3d, int key)
+void	lurd(t_cub3d	*cub3d, int key, float sensitivity)
 {
 	if (key == XK_Left)
 	{
-		cub3d->cam.a -= 0.1;
+		cub3d->cam.a -= sensitivity;
 		if (cub3d->cam.a < 0)
 			cub3d->cam.a += 2 * PI;
 		cub3d->cam.dx = cos(cub3d->cam.a) * 5;
@@ -329,7 +329,7 @@ void	lurd(t_cub3d	*cub3d, int key)
 	}
 	if (key == XK_Right)
 	{
-		cub3d->cam.a += 0.1;
+		cub3d->cam.a += sensitivity;
 		if (cub3d->cam.a > (2 * PI))
 			cub3d->cam.a -= 2 * PI;
 		cub3d->cam.dx = cos(cub3d->cam.a) * 5;
@@ -337,30 +337,29 @@ void	lurd(t_cub3d	*cub3d, int key)
 	}
 }
 
-void	slide(t_cub3d	*cub3d, int key)
-{
-	if (key == 0)
-	{
-		cub3d->cam.a -= 0.2;
-		if (cub3d->cam.a < 0)
-			cub3d->cam.a += 2 * PI;
-		cub3d->cam.dx = cos(cub3d->cam.a) * 5;
-		cub3d->cam.dy = sin(cub3d->cam.a) * 5;
-	}
-	if (key == 1)
-	{
-		cub3d->cam.a += 0.2;
-		if (cub3d->cam.a > (2 * PI))
-			cub3d->cam.a -= 2 * PI;
-		cub3d->cam.dx = cos(cub3d->cam.a) * 5;
-		cub3d->cam.dy = sin(cub3d->cam.a) * 5;
-	}
-}
+// void	slide(t_cub3d	*cub3d, int key)
+// {
+// 	if (key == 0)
+// 	{
+// 		cub3d->cam.a -= 0.2;
+// 		if (cub3d->cam.a < 0)
+// 			cub3d->cam.a += 2 * PI;
+// 		cub3d->cam.dx = cos(cub3d->cam.a) * 5;
+// 		cub3d->cam.dy = sin(cub3d->cam.a) * 5;
+// 	}
+// 	if (key == 1)
+// 	{
+// 		cub3d->cam.a += 0.2;
+// 		if (cub3d->cam.a > (2 * PI))
+// 			cub3d->cam.a -= 2 * PI;
+// 		cub3d->cam.dx = cos(cub3d->cam.a) * 5;
+// 		cub3d->cam.dy = sin(cub3d->cam.a) * 5;
+// 	}
+// }
 
-void	move_cam(t_cub3d	*cub3d, int key)
+void	move_cam(t_cub3d	*cub3d, int key, float sensitivity)
 {
 	wasd(cub3d, key);
-	lurd(cub3d, key);
-	slide(cub3d, key);
+	lurd(cub3d, key, sensitivity);
 	test(cub3d);
 }
