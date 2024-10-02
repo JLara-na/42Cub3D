@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/09/30 16:45:09 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/09/30 21:52:22 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@
 # include "../lib/minilibx-linux/mlx.h"
 //-----------------------------------DEFINES----------------------------------//
 
-# define W_X					1910
-# define W_Y					1024
+# define W_X					1920
+# define W_Y					1080
 # define PI						3.14159265359
 # define P2						1.57079632679	//	PI / 2
 # define P3						4.71238898038	//	(3 * PI) / 2
 # define DR						0.0174533		//	One degree in radians
-# define CUB3D_FOV				100
+# define CUB3D_FOV				94
 
 # define ERROR_LOCATION			"Error location: "
 # define ERROR_WRITE			"Error write()"
@@ -74,6 +74,7 @@ typedef struct s_ray
 
 typedef struct s_cam
 {
+	int				menu_flag;
 	int				**map;
 	int				map_s;
 	float			dx;
@@ -118,7 +119,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	loop_and_hooks(t_cub3d	*cub3d);
 
 int		controls(int keycode, t_cub3d *cub3d);
-int		menu(int keycode, t_cub3d *cub3d);
+int		menu(t_cub3d *cub3d);
 
 // TEST FUNCTIONS
 
