@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/03 04:02:52 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/03 22:11:43 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,28 @@
 # include "../lib/minilibx-linux/mlx.h"
 //-----------------------------------DEFINES----------------------------------//
 
-// # define W_X					1920
-// # define W_Y					1080
-// # define WH_X					960
-// # define WH_Y					540
-# define W_X					960
-# define W_Y					540
-# define WH_X					480
-# define WH_Y					270
+// # define W_X					3840
+// # define W_Y					1920
+// # define WH_X					1920
+// # define WH_Y					960
+
+# define W_X					2160
+# define W_Y					1080
+# define WH_X					1080
+# define WH_Y					540
+
+// # define W_X					960
+// # define W_Y					540
+// # define WH_X					480
+// # define WH_Y					270
+
 # define PI						3.14159265359
 # define _2PI					6.28318530718
 # define PI2					1.57079632679	//	PI / 2
 # define _3PI2					4.71238898038	//	(3 * PI) / 2
-# define DR						0.0174533		//	One degree in radians
-# define CUB3D_FOV				94
+// # define DR						0.0174533	//	One degree in radians
+# define FOV					1.57079632679	//	FOV in radians (90)
+# define RAY_NUMBER				2160
 # define SENSITIVITY			0.05
 # define SENSITIVITYX_CAP		10
 # define DEPTH_OF_FIELD			100
@@ -66,6 +74,7 @@ typedef struct s_ray
 	float			rx;		//ray x
 	float			ry;		//ray y
 	float			ra;		//ray angle
+	float			dra;	//ray angle delta
 	float			xo;		//x offset
 	float			yo;		//y offset
 	float			atan;	//tangent of a

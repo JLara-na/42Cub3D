@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 03:43:02 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/03 04:01:03 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/03 22:06:51 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	print_wall(t_cam *cam, t_mlx *mlx, t_ray *ray)
 	while (++yau < ray->lineh)
 	{
 		xau = -1;
-		while (++xau < (W_X) / CUB3D_FOV)
+		while (++xau < (W_X) / RAY_NUMBER)
 			my_mlx_pixel_put(&mlx->img, xau + ray->i
-				* ((W_X) / CUB3D_FOV), yau + ray->lineo, ray->color);
+				* (W_X / RAY_NUMBER), yau + ray->lineo, ray->color);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 03:31:13 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/03 04:05:19 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/03 22:13:19 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ void	raycast_frame(t_cam	*cam, t_mlx	*mlx)
 	t_ray	r;
 
 	ft_bzero(&r, sizeof(t_ray));
-	r.ra = cam->a - (DR * (CUB3D_FOV / 2));
+	r.dra = FOV / RAY_NUMBER;
+	r.ra = cam->a - (r.dra * (RAY_NUMBER / 2));
 	if (r.ra < 0)
 		r.ra += _2PI;
 	if (r.ra > _2PI)
 		r.ra -= _2PI;
-	while (r.i++ < CUB3D_FOV)
+	while (r.i++ < RAY_NUMBER)
 	{
 		init_ray(cam, &r);
 		cast_horizontal(cam, &r);
@@ -32,7 +33,7 @@ void	raycast_frame(t_cam	*cam, t_mlx	*mlx)
 		fish_eye_fix(cam, &r);
 		wall_size_and_place(cam, &r);
 		print_wall(cam, mlx, &r);
-		r.ra += DR;
+		r.ra += r.dra;
 		if (r.ra < 0)
 			r.ra += _2PI;
 		if (r.ra > _2PI)
