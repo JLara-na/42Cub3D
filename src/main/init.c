@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:24:36 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/09/30 12:49:55 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/03 17:13:35 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	start_mlx(t_mlx	*mlx)
 
 void	start_cam(t_cub3d	*cub3d)
 {
+	cub3d->cam.a = 2 * PI; // INICIAMOS EL ANGULO DE LA CAMARA AQUI
 	cub3d->cam.map_s = 64;
 	cub3d->cam.x = 32 * 8;
 	cub3d->cam.y = 32 * 8;

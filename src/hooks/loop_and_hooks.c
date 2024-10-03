@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 17:18:10 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/02 22:21:09 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/03 01:18:32 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	mouse_pointer(int x, int y, t_cub3d *cub3d)
 	return (0);
 }
 
-int	reset_mouse_position(t_cub3d	*cub3d)
+int	reset_mouse_pos(t_cub3d	*cub3d)
 {
 	return (mlx_mouse_move(cub3d->mlx.mlx_instance, cub3d->mlx.mlx_window, W_X / 2, W_Y/ 2));
 }
@@ -132,7 +132,8 @@ int	controls(int keycode, t_cub3d *cub3d)
 		{
 			cub3d->cam.menu_flag = 0;
 			mlx_mouse_hide(cub3d->mlx.mlx_instance, cub3d->mlx.mlx_window);
-			mlx_hook(cub3d->mlx.mlx_window, 8, (1L<<5), reset_mouse_position, &cub3d->mlx);
+			mlx_hook(cub3d->mlx.mlx_window, 8, (1L << 5),
+				reset_mouse_pos, &cub3d->mlx);
 			test(cub3d);
 		}
 	}
@@ -143,10 +144,11 @@ int	controls(int keycode, t_cub3d *cub3d)
 
 void	loop_and_hooks(t_cub3d	*cub3d)
 {
+	//mlx_int_anti_resize_win();									PROBAR EN 42
 	mlx_hook(cub3d->mlx.mlx_window, 2, 1, controls, &cub3d->mlx);
 	mlx_hook(cub3d->mlx.mlx_window, 4, 4, controls_mouse, &cub3d->mlx);
-	mlx_hook(cub3d->mlx.mlx_window, 6, (1L<<6), mouse_pointer, &cub3d->mlx);
-	mlx_hook(cub3d->mlx.mlx_window, 8, (1L<<5), reset_mouse_position, &cub3d->mlx);
+	mlx_hook(cub3d->mlx.mlx_window, 6, (1L << 6), mouse_pointer, &cub3d->mlx);
+	mlx_hook(cub3d->mlx.mlx_window, 8, (1L << 5), reset_mouse_pos, &cub3d->mlx);
 	mlx_hook(cub3d->mlx.mlx_window, 17, 0, close_w, &cub3d->mlx);
 	mlx_loop(cub3d->mlx.mlx_instance);
 }

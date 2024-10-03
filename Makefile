@@ -6,7 +6,7 @@
 #    By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/27 01:23:47 by jlara-na          #+#    #+#              #
-#    Updated: 2024/09/30 14:59:19 by jlara-na         ###   ########.fr        #
+#    Updated: 2024/10/03 04:00:36 by jlara-na         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ NAME			:=		cub3D
 SRC_DIR			:=		src/
 SUB_DIR_1		:=		main/
 SUB_DIR_2		:=		hooks/
+SUB_DIR_3		:=		raycasting/
 OBJ_DIR			:=		obj/
 LIB_DIR			:=		lib/
 INC_DIR			:=		inc/
@@ -78,6 +79,11 @@ SRC_FILES		=		$(SUB_DIR_1)main					\
 						$(SUB_DIR_1)init					\
 						$(SUB_DIR_1)testing					\
 						$(SUB_DIR_2)loop_and_hooks			\
+						$(SUB_DIR_3)cast_ray				\
+						$(SUB_DIR_3)pick_collision			\
+						$(SUB_DIR_3)raycast_frame			\
+						$(SUB_DIR_3)utils					\
+						$(SUB_DIR_3)wall					\
 
 SRC 			= 		$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 			= 		$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -108,6 +114,7 @@ $(OBJF):
 			@mkdir -p $(OBJ_DIR)
 			@mkdir -p $(OBJ_DIR)$(SUB_DIR_1)
 			@mkdir -p $(OBJ_DIR)$(SUB_DIR_2)
+			@mkdir -p $(OBJ_DIR)$(SUB_DIR_3)
 
 $(LIBFT):
 			@make -C $(LFT_DIR)

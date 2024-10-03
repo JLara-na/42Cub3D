@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 01:00:26 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/02 21:44:25 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/03 04:03:18 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 		return ;
 	dst = img->addr + (y * img->line_length + x * (img->bppx / 8));
 	*(unsigned int *)dst = color;
-}
-
-float	pitagoras(float ax, float ay, float bx, float by)
-{
-	return (sqrt((bx - ax) * (bx - ax) + (by - ay) * (by - ay)));
 }
 
 int	get_map(int x, int y)
@@ -126,6 +121,7 @@ void	put_player(t_cub3d	*cub3d)
 	}
 }
 
+/*
 void	draw_ray(t_cam	*cam, t_mlx	*mlx)
 {
 	t_ray	r;
@@ -164,7 +160,7 @@ void	draw_ray(t_cam	*cam, t_mlx	*mlx)
 			r.ry = cam->y;
 			r.dof = 8;
 		}
-		while (r.dof < 8)
+		while (r.dof < DEPTH_OF_FIELD)
 		{
 			r.mx = (int)(r.rx) >> 6;
 			r.my = (int)(r.ry) >> 6;
@@ -174,7 +170,7 @@ void	draw_ray(t_cam	*cam, t_mlx	*mlx)
 				r.hx = r.rx;
 				r.hy = r.ry;
 				r.hdis = pitagoras(cam->x, cam->y, r.hx, r.hy);
-				r.dof = 8;
+				r.dof = DEPTH_OF_FIELD;
 			}
 			else
 			{
@@ -189,14 +185,14 @@ void	draw_ray(t_cam	*cam, t_mlx	*mlx)
 		r.vx = cam->x;
 		r.vy = cam->y;
 		r.ntan = -tan(r.ra);
-		if (r.ra > P2 && r.ra < P3) // looking left
+		if (r.ra > PI2 && r.ra < _3PI2) // looking left
 		{
 			r.rx = (((int)cam->x >> 6) << 6) - 0.0001;
 			r.ry = (cam->x - r.rx) * r.ntan + cam->y;
 			r.xo = -64;
 			r.yo = -r.xo * r.ntan;
 		}
-		if (r.ra < P2 || r.ra > P3)// looking rigth
+		if (r.ra < PI2 || r.ra > _3PI2)// looking rigth
 		{
 			r.rx = (((int)cam->x >> 6) << 6) + 64;
 			r.ry = (cam->x - r.rx) * r.ntan + cam->y;
@@ -209,7 +205,7 @@ void	draw_ray(t_cam	*cam, t_mlx	*mlx)
 			r.ry = cam->y;
 			r.dof = 8;
 		}
-		while (r.dof < 8)
+		while (r.dof < DEPTH_OF_FIELD)
 		{
 			r.mx = (int)(r.rx) >> 6;
 			r.my = (int)(r.ry) >> 6;
@@ -219,7 +215,7 @@ void	draw_ray(t_cam	*cam, t_mlx	*mlx)
 				r.vx = r.rx;
 				r.vy = r.ry;
 				r.vdis = pitagoras(cam->x, cam->y, r.vx, r.vy);
-				r.dof = 8;
+				r.dof = DEPTH_OF_FIELD;
 			}
 			else
 			{
@@ -272,7 +268,6 @@ void	draw_ray(t_cam	*cam, t_mlx	*mlx)
 			while (++xau < (W_X) / CUB3D_FOV)
 				my_mlx_pixel_put(&mlx->img, xau + r.i * ((W_X) / CUB3D_FOV) , yau + r.lineo, r.color);
 		}
-
 		//-----------------------------------------------------------------------------
 		//AQUI VOLVEMOS A ANADIR UN GRADO MAS Y COMPROBAMOS LIMITES
 		r.ra += DR;
@@ -282,13 +277,13 @@ void	draw_ray(t_cam	*cam, t_mlx	*mlx)
 			r.ra -= 2 * PI;
 	}
 }
-
+*/
 void	test(t_cub3d	*cub3d)
 {
 	put_backgrownd(cub3d);
-	draw_ray(&cub3d->cam, &cub3d->mlx);
-	put_walls(cub3d);
-	put_player(cub3d);
+	raycast_frame(&cub3d->cam, &cub3d->mlx);
+	//put_walls(cub3d);
+	//put_player(cub3d);
 	mlx_put_image_to_window(cub3d->mlx.mlx_instance, cub3d->mlx.mlx_window,
 	 	cub3d->mlx.img.img_instance, 0, 0);
 }
@@ -336,26 +331,6 @@ void	lurd(t_cub3d	*cub3d, int key, float sensitivity)
 		cub3d->cam.dy = sin(cub3d->cam.a) * 5;
 	}
 }
-
-// void	slide(t_cub3d	*cub3d, int key)
-// {
-// 	if (key == 0)
-// 	{
-// 		cub3d->cam.a -= 0.2;
-// 		if (cub3d->cam.a < 0)
-// 			cub3d->cam.a += 2 * PI;
-// 		cub3d->cam.dx = cos(cub3d->cam.a) * 5;
-// 		cub3d->cam.dy = sin(cub3d->cam.a) * 5;
-// 	}
-// 	if (key == 1)
-// 	{
-// 		cub3d->cam.a += 0.2;
-// 		if (cub3d->cam.a > (2 * PI))
-// 			cub3d->cam.a -= 2 * PI;
-// 		cub3d->cam.dx = cos(cub3d->cam.a) * 5;
-// 		cub3d->cam.dy = sin(cub3d->cam.a) * 5;
-// 	}
-// }
 
 void	move_cam(t_cub3d	*cub3d, int key, float sensitivity)
 {
