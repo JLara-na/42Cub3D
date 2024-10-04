@@ -6,12 +6,14 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 03:25:57 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/03 03:59:33 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/04 01:07:17 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
+/*Pick between the horizontal or the vertical cast depending on wich one
+intersects with a wall closer to the cam and sets the wall color*/
 void	pick_collision(t_cam *cam, t_ray *ray)
 {
 	(void)cam;

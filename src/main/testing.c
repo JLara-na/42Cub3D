@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 01:00:26 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/03 21:25:16 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/04 03:41:12 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 
 int	get_map(int x, int y)
 {
-	if (x < 0 || y < 0)
+	if (x < 0 || y < 0 || x > 7 || x > 7)
 		return (0);
 	const int	states[8][8] = {
 	{1, 1, 1, 1, 1, 1, 1, 1},
 	{1, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 1, 0, 1, 1, 0, 1},
-	{1, 0, 1, 0, 0, 1, 0, 1},
-	{1, 0, 1, 0, 0, 0, 0, 1},
 	{1, 0, 1, 1, 1, 1, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 1, 0, 0, 1, 0, 1},
+	{1, 0, 0, 0, 0, 1, 0, 1},
 	{1, 1, 1, 1, 1, 1, 1, 1},
 	};
 
@@ -278,7 +278,7 @@ void	draw_ray(t_cam	*cam, t_mlx	*mlx)
 	}
 }
 */
-void	test(t_cub3d	*cub3d)
+void	put_frame(t_cub3d	*cub3d)
 {
 	put_backgrownd(cub3d);
 	raycast_frame(&cub3d->cam, &cub3d->mlx);
@@ -286,55 +286,4 @@ void	test(t_cub3d	*cub3d)
 	//put_player(cub3d);
 	mlx_put_image_to_window(cub3d->mlx.mlx_instance, cub3d->mlx.mlx_window,
 	 	cub3d->mlx.img.img_instance, 0, 0);
-}
-
-void	wasd(t_cub3d	*cub3d, int key)
-{
-	if (key == XK_a)
-	{
-		cub3d->cam.x += cub3d->cam.dy;
-		cub3d->cam.y -= cub3d->cam.dx;
-	}
-	if (key == XK_w)
-	{
-		cub3d->cam.x += cub3d->cam.dx;
-		cub3d->cam.y += cub3d->cam.dy;
-	}
-	if (key == XK_d)
-	{
-		cub3d->cam.x -= cub3d->cam.dy;
-		cub3d->cam.y += cub3d->cam.dx;
-	}
-	if (key == XK_s)
-	{
-		cub3d->cam.x -= cub3d->cam.dx;
-		cub3d->cam.y -= cub3d->cam.dy;
-	}
-}
-
-void	lurd(t_cub3d	*cub3d, int key, float sensitivity)
-{
-	if (key == XK_Left)
-	{
-		cub3d->cam.a -= sensitivity;
-		if (cub3d->cam.a < 0)
-			cub3d->cam.a += 2 * PI;
-		cub3d->cam.dx = cos(cub3d->cam.a) * 5;
-		cub3d->cam.dy = sin(cub3d->cam.a) * 5;
-	}
-	if (key == XK_Right)
-	{
-		cub3d->cam.a += sensitivity;
-		if (cub3d->cam.a > (2 * PI))
-			cub3d->cam.a -= 2 * PI;
-		cub3d->cam.dx = cos(cub3d->cam.a) * 5;
-		cub3d->cam.dy = sin(cub3d->cam.a) * 5;
-	}
-}
-
-void	move_cam(t_cub3d	*cub3d, int key, float sensitivity)
-{
-	wasd(cub3d, key);
-	lurd(cub3d, key, sensitivity);
-	test(cub3d);
 }

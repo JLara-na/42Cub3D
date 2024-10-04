@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 17:18:10 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/03 01:18:32 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/04 03:48:51 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ int	controls_mouse(int key, int x, int y, t_cub3d *cub3d)
 	(void)x;
 	(void)y;
 	if (key == 4)
-		move_cam(cub3d, XK_Left, SENSITIVITY);
+		change_cam(cub3d, XK_Left, SENSITIVITY);
 	if (key == 5)
-		move_cam(cub3d, XK_Right, SENSITIVITY);
+		change_cam(cub3d, XK_Right, SENSITIVITY);
 	return (0);
 }
 
@@ -82,9 +82,9 @@ int	mouse_pointer(int x, int y, t_cub3d *cub3d)
 	if (inputs % 8 == 0)
 	{
 		if (prevx > x)
-			move_cam(cub3d, XK_Left, SENSITIVITY * speed * -1);
+			change_cam(cub3d, XK_Left, SENSITIVITY * speed * -1);
 		if (prevx < x)
-			move_cam(cub3d, XK_Right, SENSITIVITY * speed);
+			change_cam(cub3d, XK_Right, SENSITIVITY * speed);
 		if (y < WH_Y - 5 || y > WH_Y + 5 || x < WH_X - 5 || x > WH_X + 5)
 			mlx_mouse_move(cub3d->mlx.mlx_instance, cub3d->mlx.mlx_window,
 				WH_X, WH_Y);
@@ -103,27 +103,14 @@ int	reset_mouse_pos(t_cub3d	*cub3d)
 /*Hook function containing all key events*/
 int	controls(int keycode, t_cub3d *cub3d)
 {
-	if (keycode == XK_Escape)
+	if (keycode == XK_Escape && !cub3d->cam.menu_flag)
 	{
-		mlx_hook(cub3d->mlx.mlx_window, 8, (1L<<5), NULL, &cub3d->mlx);
+		mlx_hook(cub3d->mlx.mlx_window, 8, 0, NULL, NULL);
 		cub3d->cam.menu_flag = 1;
 		put_menu(cub3d);
 	}
 	if (!cub3d->cam.menu_flag)
-	{
-		if (keycode == XK_a)
-			move_cam(cub3d, XK_a, SENSITIVITY);
-		if (keycode == XK_w)
-			move_cam(cub3d, XK_w, SENSITIVITY);
-		if (keycode == XK_d)
-			move_cam(cub3d, XK_d, SENSITIVITY);
-		if (keycode == XK_s)
-			move_cam(cub3d, XK_s, SENSITIVITY);
-		if (keycode == XK_Left)
-			move_cam(cub3d, XK_Left, SENSITIVITY);
-		if (keycode == XK_Right)
-			move_cam(cub3d, XK_Right, SENSITIVITY);
-	}
+			change_cam(cub3d, keycode, SENSITIVITY);
 	else
 	{
 		if (keycode == XK_q)
@@ -134,13 +121,11 @@ int	controls(int keycode, t_cub3d *cub3d)
 			mlx_mouse_hide(cub3d->mlx.mlx_instance, cub3d->mlx.mlx_window);
 			mlx_hook(cub3d->mlx.mlx_window, 8, (1L << 5),
 				reset_mouse_pos, &cub3d->mlx);
-			test(cub3d);
+			put_frame(cub3d);
 		}
 	}
 	return (0);
 }
-
-
 
 void	loop_and_hooks(t_cub3d	*cub3d)
 {

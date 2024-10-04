@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/03 22:11:43 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/04 03:36:30 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,19 @@
 // # define W_Y					1920
 // # define WH_X					1920
 // # define WH_Y					960
+//42 settings
+// # define W_X					2160
+// # define W_Y					1080
+// # define WH_X					1080
+// # define WH_Y					540
+// # define RAY_NUMBER				2160
 
-# define W_X					2160
-# define W_Y					1080
-# define WH_X					1080
-# define WH_Y					540
-
-// # define W_X					960
-// # define W_Y					540
-// # define WH_X					480
-// # define WH_Y					270
+//Home settings
+# define W_X					960
+# define W_Y					540
+# define WH_X					480
+# define WH_Y					270
+# define RAY_NUMBER				960
 
 # define PI						3.14159265359
 # define _2PI					6.28318530718
@@ -49,11 +52,10 @@
 # define _3PI2					4.71238898038	//	(3 * PI) / 2
 // # define DR						0.0174533	//	One degree in radians
 # define FOV					1.57079632679	//	FOV in radians (90)
-# define RAY_NUMBER				2160
 # define SENSITIVITY			0.05
 # define SENSITIVITYX_CAP		10
 # define DEPTH_OF_FIELD			100
-
+# define COLISION_DISTANCE		10
 
 # define ERROR_LOCATION			"Error location: "
 # define ERROR_WRITE			"Error write()"
@@ -65,31 +67,35 @@
 
 typedef struct s_ray
 {
-	int				color;	//color del sombreado
-	int				i;		//iter
-	int				mx;		//map x
-	int				my;		//map y
-	int				mp;		//map pos
-	int				dof;	//depth of field
-	float			rx;		//ray x
-	float			ry;		//ray y
-	float			ra;		//ray angle
-	float			dra;	//ray angle delta
-	float			xo;		//x offset
-	float			yo;		//y offset
-	float			atan;	//tangent of a
-	float			ntan;	//negative tangent of a
-	float			hdis;	//distancia horizontal
-	float			hx;		//x de la colision horizontal
-	float			hy;		//y de la colision horizontal
-	float			vdis;	//distancia vertical
-	float			vx;		//x de la colision vertical
-	float			vy;		//y de la colision vertical
-	float			tdis;	//distancia mas corta de las dos
-	float			lineh;	//altura de la pared 3D
-	float			lineo;	//offset de la pared 3D
-	float			ca;		//angulo resultante de la resta del angulo de la 
-							//camara y el del rayo (para quitar fish-eye)
+	int				color;			//color del sombreado
+	int				i;				//iter
+	int				mx;				//map x
+	int				my;				//map y
+	int				mx_sub_xo;		//map x - xo
+	int				my_sub_yo;		//map y - yo
+	int				mx_add_xo;		//map x + xo
+	int				my_add_yo;		//map y + yo
+	int				mp;				//map pos (ver si la vamos a necesitar)
+	int				dof;			//depth of field
+	float			rx;				//ray x
+	float			ry;				//ray y
+	float			ra;				//ray angle
+	float			dra;			//ray angle delta
+	float			xo;				//x offset
+	float			yo;				//y offset
+	float			atan;			//tangent of a
+	float			ntan;			//negative tangent of a
+	float			hdis;			//distancia horizontal
+	float			hx;				//x de la colision horizontal
+	float			hy;				//y de la colision horizontal
+	float			vdis;			//distancia vertical
+	float			vx;				//x de la colision vertical
+	float			vy;				//y de la colision vertical
+	float			tdis;			//distancia mas corta de las dos
+	float			lineh;			//altura de la pared 3D
+	float			lineo;			//offset de la pared 3D
+	float			ca;			//angulo resultante de la resta del angulo de
+								//camara y el del rayo (para quitar fish-eye)
 }				t_ray;
 
 typedef struct s_cam
@@ -158,8 +164,8 @@ int		menu(t_cub3d *cub3d);
 
 // TEST FUNCTIONS
 
-void	test(t_cub3d	*cub3d);
+void	put_frame(t_cub3d	*cub3d);
 int		get_map(int x, int y);
-void	move_cam(t_cub3d	*cub3d, int side, float sensitivity);
+void	change_cam(t_cub3d	*cub3d, int side, float sensitivity);
 
 #endif
