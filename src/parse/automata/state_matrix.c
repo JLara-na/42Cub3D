@@ -6,17 +6,17 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 23:15:45 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/05 15:28:08 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/05 20:26:30 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/cub3d.h"
 
-//  \s  F  C 10  c other
+//  \s  F  C 10  c 	other
 int	get_state(int i, int j)
 {
-	const int	states[][5] = {
-	{0, 4, 6, 3, 3, 3},	// 0 looking
+	const int	states[][6] = {
+	{0, 4, 6, 3, 3, 3},	// 0 START
 	{3, 1, 1, 1, 1, 1},	// 1 PATH
 	{3, 3, 3, 2, 7, 3},	// 2 NUM VALUE 
 	{3, 3, 3, 3, 3, 3},	// 3 INVALID

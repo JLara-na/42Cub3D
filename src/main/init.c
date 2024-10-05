@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:24:36 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/03 17:13:35 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/05 20:29:02 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	start_cam(t_cub3d	*cub3d)
 //Sets up the initial state of the program
 int	init_all(t_cub3d	*cub3d)
 {
-	ft_bzero(cub3d, sizeof(t_cub3d));
 	if (start_mlx(&cub3d->mlx))
 		terminate(ERROR_MLX_START, EXIT_FAILURE);
 	start_cam(cub3d);

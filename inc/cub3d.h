@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/05 14:31:11 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/05 22:13:37 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,28 @@
 
 //-----------------------------------STRUCTS----------------------------------//
 
+typedef enum e_cardinal
+{
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST
+}	t_cardinal;
+
+typedef enum e_color_fc
+{
+	FLOOR,
+	CEILING
+}	t_color_fc;
+
 typedef struct s_parse_flags
 {
-	int				north_f;
-	int				south_f;
-	int				west_f;
-	int				east_f;
-	int				floor_f;
-	int				ceiling_f;
+	int				n_f;
+	int				s_f;
+	int				w_f;
+	int				e_f;
+	int				f_f;
+	int				c_f;
 	int				map_f;
 
 }				t_parse_flags;
@@ -144,6 +158,8 @@ typedef struct s_cub3d
 	t_mlx			mlx;
 	t_cam			cam;
 	t_parse_flags	p_f;
+	int				color[2];
+	char			**texture_path;
 }				t_cub3d;
 
 //----------------------------------FUNCTIONS---------------------------------//

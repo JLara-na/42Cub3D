@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 17:33:46 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/05 15:40:52 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/05 23:02:53 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,21 @@ int	store_file(char	**av, char	***file)
 	return (EXIT_FAILURE);
 }
 
-int	extract_element(char	*str, t_cub3d *cub3d)
+int	extract_elements(char	*str, t_cub3d *cub3d)
 {
 	t_automata	a;
 	int			state;
 
+	if (ft_samestr(str, "\n"))
+		return (1);
 	automata_init(&a, cub3d);
-	a.str = str;
+	a.str = ft_strtrim(str, "\n");
 	state = evaluate(&a);
 	if (state > a.errorlen)
-		printf("%s\n", a.errors[state]);
+		printf("%s in %s", a.errors[state], str);
 	free_alph_err(&a);
+	free(a.str);
+	return (1);
 }
 
 int	extract_data(char	**file, t_cub3d *cub3d)
@@ -73,9 +77,13 @@ int	extract_data(char	**file, t_cub3d *cub3d)
 	int	i;
 
 	i = -1;
-	while (file[++i] && !cub3d->p_f.map_f)
+	while (file[++i] && (!cub3d->p_f.c_f || !cub3d->p_f.f_f
+			|| !cub3d->p_f.n_f || !cub3d->p_f.s_f || !cub3d->p_f.w_f
+			|| !cub3d->p_f.e_f))
 		extract_elements(file[i], cub3d);
-	extract_map(file += i);
+	printf("la linea -> %d\n", i);
+	// extract_map(file += i);
+	return (0);
 }
 
 int	parse(int ac, char	**av, t_cub3d	*cub3d)
@@ -83,13 +91,14 @@ int	parse(int ac, char	**av, t_cub3d	*cub3d)
 	char	**file;
 
 	file = NULL;
-	(void)cub3d;
+	ft_bzero(cub3d, sizeof(t_cub3d));
+	cub3d->texture_path = calloc(5, sizeof(char *));
 	if (ac != 2 || !ft_str_end_with(av[1], ".cub"))
 		return (EXIT_FAILURE); // ERROR DE ARGUMENTOS
 	if (store_file(av, &file))
 		return (EXIT_FAILURE); // ERROR DE LECTURA (mapa vacio o error de open)
 	if (extract_data(file, cub3d))
-		return (EXIT_FAILURE);
+	 	return (EXIT_FAILURE);
 	for(int i = -1; file[++i]; NULL)
 		printf("%s", file[i]);
 	ft_free_sarray(file);
