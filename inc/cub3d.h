@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/04 03:36:30 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/05 14:31:11 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <unistd.h>
 # include <X11/keysym.h>
 # include <X11/keysymdef.h>
+# include "automata.h"
 # include "ansi_defines.h"
 # include "../lib/libft/libft.h"
 # include "../lib/minilibx-linux/mlx.h"
@@ -64,6 +65,18 @@
 # define BYE_MSG				"Bye!"
 
 //-----------------------------------STRUCTS----------------------------------//
+
+typedef struct s_parse_flags
+{
+	int				north_f;
+	int				south_f;
+	int				west_f;
+	int				east_f;
+	int				floor_f;
+	int				ceiling_f;
+	int				map_f;
+
+}				t_parse_flags;
 
 typedef struct s_ray
 {
@@ -128,14 +141,16 @@ typedef struct s_mlx
 
 typedef struct s_cub3d
 {
-	t_mlx	mlx;
-	t_cam	cam;
-}	t_cub3d;
+	t_mlx			mlx;
+	t_cam			cam;
+	t_parse_flags	p_f;
+}				t_cub3d;
 
 //----------------------------------FUNCTIONS---------------------------------//
 
 int		init_all(t_cub3d	*cub3d);
 void	terminate(char *msg, int exit_status);
+int		parse(int ac, char	**av, t_cub3d	*cub3d);
 
 //----------------------------------RAYCAST FT--------------------------------//
 

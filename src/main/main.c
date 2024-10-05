@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 01:35:16 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/04 02:11:19 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/04 17:49:31 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ int	main(int ac, char	**av)
 
 	(void)ac;
 	(void)av;
-	init_all(&cub3d);
-
-	put_frame(&cub3d);
-
-	loop_and_hooks(&cub3d);
+	if (!parse(ac, av, &cub3d))
+	{
+		init_all(&cub3d);
+		put_frame(&cub3d);
+		loop_and_hooks(&cub3d);
+	}
 	return (EXIT_SUCCESS);
 }
