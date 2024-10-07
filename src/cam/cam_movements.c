@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 03:40:05 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/04 03:40:31 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/07 04:16:11 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,21 @@ void	move_cam(t_cub3d	*cub3d, int key)
 
 	ft_bzero(&c, sizeof(t_ray));
 	collision_init(cub3d, &c, key);
-	if (key == XK_s && get_map(c.mx_sub_xo, c.my) == 0)
+	if (key == XK_s && get_map(&cub3d->cam, c.mx_sub_xo, c.my) != '1')
 		cub3d->cam.x -= cub3d->cam.dx;
-	if (key == XK_s && get_map(c.mx, c.my_sub_yo) == 0)
+	if (key == XK_s && get_map(&cub3d->cam, c.mx, c.my_sub_yo) != '1')
 		cub3d->cam.y -= cub3d->cam.dy;
-	if (key == XK_w && get_map(c.mx_add_xo, c.my) == 0)
+	if (key == XK_w && get_map(&cub3d->cam, c.mx_add_xo, c.my) != '1')
 		cub3d->cam.x += cub3d->cam.dx;
-	if (key == XK_w && get_map(c.mx, c.my_add_yo) == 0)
+	if (key == XK_w && get_map(&cub3d->cam, c.mx, c.my_add_yo) != '1')
 		cub3d->cam.y += cub3d->cam.dy;
-	if (key == XK_d && get_map(c.mx_sub_xo, c.my) == 0)
+	if (key == XK_d && get_map(&cub3d->cam, c.mx_sub_xo, c.my) != '1')
 		cub3d->cam.x -= cub3d->cam.dy;
-	if (key == XK_d && get_map(c.mx, c.my_add_yo) == 0)
+	if (key == XK_d && get_map(&cub3d->cam, c.mx, c.my_add_yo) != '1')
 		cub3d->cam.y += cub3d->cam.dx;
-	if (key == XK_a && get_map(c.mx_add_xo, c.my) == 0)
+	if (key == XK_a && get_map(&cub3d->cam, c.mx_add_xo, c.my) != '1')
 		cub3d->cam.x += cub3d->cam.dy;
-	if (key == XK_a && get_map(c.mx, c.my_sub_yo) == 0)
+	if (key == XK_a && get_map(&cub3d->cam, c.mx, c.my_sub_yo) != '1')
 		cub3d->cam.y -= cub3d->cam.dx;
 }
 

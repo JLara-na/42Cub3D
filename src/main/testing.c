@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 01:00:26 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/05 20:00:53 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/07 03:56:57 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,11 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	get_map(int x, int y)
+char	get_map(t_cam *cam, int x, int y)
 {
-	if (x < 0 || y < 0 || x > 7 || x > 7)
+	if (x < 0 || y < 0 || x > cam->map_w || y > cam->map_h)
 		return (0);
-	const int	states[8][8] = {
-	{1, 1, 1, 1, 1, 1, 1, 1},
-	{1, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 1, 1, 1, 1, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 1, 0, 0, 1, 0, 1},
-	{1, 0, 0, 0, 0, 1, 0, 1},
-	{1, 1, 1, 1, 1, 1, 1, 1},
-	};
-
-	return (states[y][x]);
+	return (cam->map_c[y][x]);
 }
 
 void	put_backgrownd(t_cub3d	*cub3d)
@@ -74,24 +63,24 @@ void	square_wall(t_cub3d	*cub3d, int x, int y, int color)
 	}
 }
 
-void	put_walls(t_cub3d	*cub3d)
-{
-	int	x;
-	int	y;
+// void	put_walls(t_cub3d	*cub3d)
+// {
+// 	int	x;
+// 	int	y;
 
-	y = -1;
-	while (++y < 8)
-	{
-		x = -1;
-		while (++x < 8)
-		{
-			if (get_map(x, y) == 1)
-				square_wall(cub3d, x, y, 0x00ff9836);
-			else
-				square_wall(cub3d, x, y, 0x00ffad6c);
-		}
-	}
-}
+// 	y = -1;
+// 	while (++y < 8)
+// 	{
+// 		x = -1;
+// 		while (++x < 8)
+// 		{
+// 			if (get_map(x, y) == 1)
+// 				square_wall(cub3d, x, y, 0x00ff9836);
+// 			else
+// 				square_wall(cub3d, x, y, 0x00ffad6c);
+// 		}
+// 	}
+// }
 
 void	put_player(t_cub3d	*cub3d)
 {

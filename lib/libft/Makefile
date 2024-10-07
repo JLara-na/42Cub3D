@@ -6,7 +6,7 @@
 #    By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/13 17:02:15 by jlara-na          #+#    #+#              #
-#    Updated: 2024/09/26 23:49:27 by jlara-na         ###   ########.fr        #
+#    Updated: 2024/10/06 01:04:19 by jlara-na         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ FILES_C =	ft_isalpha.c				\
 			ft_chrpos.c					\
 			ft_add_to_sarray.c			\
 			ft_free_sarray.c			\
+			ft_str_end_with.c 			\
 
 FILES_O = $(FILES_C:.c=.o)
 

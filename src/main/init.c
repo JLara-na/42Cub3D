@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:24:36 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/05 20:29:02 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/07 04:28:28 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,15 @@ int	start_mlx(t_mlx	*mlx)
 
 void	start_cam(t_cub3d	*cub3d)
 {
-	cub3d->cam.a = 2 * PI; // INICIAMOS EL ANGULO DE LA CAMARA AQUI
+	if (cub3d->cam.init_angle == 'N')
+		cub3d->cam.a = _3PI2;
+	if (cub3d->cam.init_angle == 'S')
+		cub3d->cam.a = PI2;
+	if (cub3d->cam.init_angle == 'W')
+		cub3d->cam.a = PI;
+	if (cub3d->cam.init_angle == 'E')
+		cub3d->cam.a = _2PI;
 	cub3d->cam.map_s = 64;
-	cub3d->cam.x = 32 * 8;
-	cub3d->cam.y = 32 * 8;
 	cub3d->cam.dx = cos(cub3d->cam.a) * 5;
 	cub3d->cam.dy = sin(cub3d->cam.a) * 5;
 }

@@ -6,7 +6,7 @@
 #    By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/27 01:23:47 by jlara-na          #+#    #+#              #
-#    Updated: 2024/10/05 22:23:10 by jlara-na         ###   ########.fr        #
+#    Updated: 2024/10/06 19:58:45 by jlara-na         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,9 @@ SRC_FILES		=		$(SUB_DIR_1)main					\
 						$(SUB_DIR_3)utils					\
 						$(SUB_DIR_3)wall					\
 						$(SUB_DIR_4)cam_movements			\
-						$(SUB_DIR_5)map_parse				\
+						$(SUB_DIR_5)file_parse				\
+						$(SUB_DIR_5)map_checker				\
+						$(SUB_DIR_5)utils					\
 						$(SUB_DIR_5_1)action_utils			\
 						$(SUB_DIR_5_1)actions				\
 						$(SUB_DIR_5_1)evaluate				\

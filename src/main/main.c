@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 01:35:16 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/05 22:53:23 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/07 04:02:16 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ void	terminate(char *msg, int exit_status)
 	exit(exit_status);
 }
 
+void	free_all(t_cub3d	*cub3d)
+{
+	ft_free_sarray(cub3d->texture_path);
+	ft_free_sarray(cub3d->cam.map_c);
+}
+
 int	main(int ac, char	**av)
 {
 	t_cub3d	cub3d;
@@ -35,16 +41,12 @@ int	main(int ac, char	**av)
 	(void)av;
 	if (!parse(ac, av, &cub3d))
 	{
+		printf("Hola\n");
 		init_all(&cub3d);
-		printf("%s\n", cub3d.texture_path[NORTH]);
-		printf("%s\n", cub3d.texture_path[SOUTH]);
-		printf("%s\n", cub3d.texture_path[WEST]);
-		printf("%s\n", cub3d.texture_path[EAST]);
-		printf("%d\n", cub3d.color[FLOOR]);
-		printf("%d\n", cub3d.color[CEILING]);
-		ft_free_sarray(cub3d.texture_path);
 		put_frame(&cub3d);
 		loop_and_hooks(&cub3d);
 	}
+	else
+		return (free_all(&cub3d), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

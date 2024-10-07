@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/05 22:13:37 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/07 04:21:49 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,11 @@ typedef struct s_cam
 {
 	int				menu_flag;	//Flag que indica que el menu esta activo
 	int				**map;		//Mapa en forma de matriz 2D
+	char			**map_c;
+	char			init_angle;
+	int				map_surface;
+	int				map_h;
+	int				map_w;
 	int				map_s;		//
 	float			dx;			//
 	float			dy;			//
@@ -166,7 +171,9 @@ typedef struct s_cub3d
 
 int		init_all(t_cub3d	*cub3d);
 void	terminate(char *msg, int exit_status);
+
 int		parse(int ac, char	**av, t_cub3d	*cub3d);
+int		map_checker(t_cub3d	*cub3d);
 
 //----------------------------------RAYCAST FT--------------------------------//
 
@@ -185,6 +192,11 @@ void	raycast_frame(t_cam	*cam, t_mlx	*mlx);
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 float	pitagoras(float ax, float ay, float bx, float by);
+int		valid_map_line(char *line);
+int		ft_sarray_size(char	**sarr);
+void	map_iter_context(char **map, void (*f)(void *, int x, int y),
+			void *data);
+void	get_sizes(t_cub3d	*cub3d);
 
 //--------------------------------HOOK FUNCTIONS------------------------------//
 
@@ -196,7 +208,7 @@ int		menu(t_cub3d *cub3d);
 // TEST FUNCTIONS
 
 void	put_frame(t_cub3d	*cub3d);
-int		get_map(int x, int y);
+char	get_map(t_cam *cam, int x, int y);
 void	change_cam(t_cub3d	*cub3d, int side, float sensitivity);
 
 #endif

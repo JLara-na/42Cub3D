@@ -1,35 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parse.c                                        :+:      :+:    :+:   */
+/*   file_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 17:33:46 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/05 23:02:53 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/06 20:41:04 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
-
-int	ft_str_end_with(const char *str, const char *end)
-{
-	int	len_a;
-	int	len_b;
-
-	len_a = ft_strlen(str);
-	len_b = ft_strlen(end);
-	if (len_b > len_a)
-		return (0);
-	while (len_b > 0)
-	{
-		if (str[len_a] != end[len_b])
-			return (0);
-		len_a--;
-		len_b--;
-	}
-	return (1);
-}
 
 int	store_file(char	**av, char	***file)
 {
@@ -72,6 +53,26 @@ int	extract_elements(char	*str, t_cub3d *cub3d)
 	return (1);
 }
 
+int	extract_map(char	**file, t_cub3d *cub3d)
+{
+	int	i;
+
+	(void)cub3d;
+	i = 0;
+	cub3d->cam.map_c = calloc(1, sizeof(char **));
+	while (file[i] && ft_samestr(file[i], "\n"))
+		i++;
+	while (file[i])
+	{
+		if (valid_map_line(file[i]) != 0)
+			cub3d->cam.map_c = ft_add_to_sarray(cub3d->cam.map_c, file[i]);
+		else
+			terminate("Map contains invalid characters\n", 1);
+		i++;
+	}
+	return (0);
+}
+
 int	extract_data(char	**file, t_cub3d *cub3d)
 {
 	int	i;
@@ -81,8 +82,7 @@ int	extract_data(char	**file, t_cub3d *cub3d)
 			|| !cub3d->p_f.n_f || !cub3d->p_f.s_f || !cub3d->p_f.w_f
 			|| !cub3d->p_f.e_f))
 		extract_elements(file[i], cub3d);
-	printf("la linea -> %d\n", i);
-	// extract_map(file += i);
+	extract_map(file += i, cub3d);
 	return (0);
 }
 
@@ -94,13 +94,13 @@ int	parse(int ac, char	**av, t_cub3d	*cub3d)
 	ft_bzero(cub3d, sizeof(t_cub3d));
 	cub3d->texture_path = calloc(5, sizeof(char *));
 	if (ac != 2 || !ft_str_end_with(av[1], ".cub"))
-		return (EXIT_FAILURE); // ERROR DE ARGUMENTOS
+		return (EXIT_FAILURE);
 	if (store_file(av, &file))
-		return (EXIT_FAILURE); // ERROR DE LECTURA (mapa vacio o error de open)
+		return (EXIT_FAILURE);
 	if (extract_data(file, cub3d))
-	 	return (EXIT_FAILURE);
-	for(int i = -1; file[++i]; NULL)
-		printf("%s", file[i]);
+		return (EXIT_FAILURE);
 	ft_free_sarray(file);
+	if (map_checker(cub3d))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
