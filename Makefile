@@ -6,7 +6,7 @@
 #    By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/27 01:23:47 by jlara-na          #+#    #+#              #
-#    Updated: 2024/10/06 19:58:45 by jlara-na         ###   ########.fr        #
+#    Updated: 2024/10/07 19:28:37 by jlara-na         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SUB_DIR_3		:=		raycasting/
 SUB_DIR_4		:=		cam/
 SUB_DIR_5		:=		parse/
 SUB_DIR_5_1		:=		parse/automata/
+SUB_DIR_6		:=		minimap/
 OBJ_DIR			:=		obj/
 LIB_DIR			:=		lib/
 INC_DIR			:=		inc/
@@ -96,6 +97,7 @@ SRC_FILES		=		$(SUB_DIR_1)main					\
 						$(SUB_DIR_5_1)evaluate				\
 						$(SUB_DIR_5_1)init					\
 						$(SUB_DIR_5_1)state_matrix			\
+						$(SUB_DIR_6)minimap					\
 
 SRC 			= 		$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 			= 		$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -130,6 +132,7 @@ $(OBJF):
 			@mkdir -p $(OBJ_DIR)$(SUB_DIR_4)
 			@mkdir -p $(OBJ_DIR)$(SUB_DIR_5)
 			@mkdir -p $(OBJ_DIR)$(SUB_DIR_5_1)
+			@mkdir -p $(OBJ_DIR)$(SUB_DIR_6)
 
 $(LIBFT):
 			@make -C $(LFT_DIR)

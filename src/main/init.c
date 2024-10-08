@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:24:36 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/07 04:28:28 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/08 01:49:09 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,23 @@ int	start_mlx(t_mlx	*mlx)
 	else
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
+}
+
+void	load_sprites(char **map, t_mlx	*mlx)
+{
+	int	x;
+	int	i;
+
+	x = 64;
+	i = -1;
+	while (++i < 4)
+	{
+		mlx->img_wall[i].img_instance = mlx_xpm_file_to_image
+			(mlx->mlx_instance, map[i], &x, &x);
+		mlx->img_wall[i].addr = mlx_get_data_addr
+			(mlx->img_wall[i].img_instance, &mlx->img_wall[i].bppx,
+				&mlx->img_wall[i].line_length, &mlx->img_wall[i].endian);
+	}
 }
 
 void	start_cam(t_cub3d	*cub3d)
@@ -47,6 +64,7 @@ int	init_all(t_cub3d	*cub3d)
 {
 	if (start_mlx(&cub3d->mlx))
 		terminate(ERROR_MLX_START, EXIT_FAILURE);
+	load_sprites(cub3d->texture_path, &cub3d->mlx);
 	start_cam(cub3d);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 01:35:16 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/07 04:02:16 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/08 01:47:55 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,15 @@ void	free_all(t_cub3d	*cub3d)
 	ft_free_sarray(cub3d->cam.map_c);
 }
 
+void	put_frame(t_cub3d	*cub3d)
+{
+	put_backgrownd(cub3d);
+	raycast_frame(&cub3d->cam, &cub3d->mlx);
+	minimap(cub3d);
+	mlx_put_image_to_window(cub3d->mlx.mlx_instance, cub3d->mlx.mlx_window,
+		cub3d->mlx.img.img_instance, 0, 0);
+}
+
 int	main(int ac, char	**av)
 {
 	t_cub3d	cub3d;
@@ -41,7 +50,6 @@ int	main(int ac, char	**av)
 	(void)av;
 	if (!parse(ac, av, &cub3d))
 	{
-		printf("Hola\n");
 		init_all(&cub3d);
 		put_frame(&cub3d);
 		loop_and_hooks(&cub3d);
