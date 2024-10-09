@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 01:59:52 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/07 04:17:49 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/09 18:41:09 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	look_for_horizontal_walls(t_cam	*cam, t_ray *ray)
 	ray->my = (int)(ray->ry) / 64;
 	ray->mp = ray->my * cam->map_w + ray->mx;
 	if (ray->mp < cam->map_h * cam->map_w
-		&& get_map(cam, ray->mx, ray->my) == '1')
+		&& ft_chrpos("1D", get_map(cam, ray->mx, ray->my)) != -1)
 	{
 		ray->hx = ray->rx;
 		ray->hy = ray->ry;
@@ -60,7 +60,7 @@ void	look_for_vertical_walls(t_cam	*cam, t_ray *ray)
 	ray->my = (int)(ray->ry) / 64;
 	ray->mp = ray->my * cam->map_w + ray->mx;
 	if (ray->mp < cam->map_h * cam->map_w
-		&& get_map(cam, ray->mx, ray->my) == '1')
+		&& ft_chrpos("1D", get_map(cam, ray->mx, ray->my)) != -1)
 	{
 		ray->vx = ray->rx;
 		ray->vy = ray->ry;

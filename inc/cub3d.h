@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/08 03:19:59 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/09 23:48:57 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@
 // # define WH_Y					540
 // # define RAY_NUMBER				2160
 
+// # define W_X					1440
+// # define W_Y					720
+// # define WH_X					960
+// # define WH_Y					360
+// # define RAY_NUMBER				1440
+
 //Home settings
 # define W_X					960
 # define W_Y					540
@@ -48,11 +54,11 @@
 # define PI2					1.57079632679	//	PI / 2
 # define _3PI2					4.71238898038	//	(3 * PI) / 2
 # define DR						0.0174533	//	One degree in radians
-# define FOV					1.57079632679	//	FOV in radians (90)
+# define FOV					1.57079632679	//	FOV in radians (90º)
 # define SENSITIVITY			0.05
 # define SENSITIVITYX_CAP		10
 # define DEPTH_OF_FIELD			100
-# define COLISION_DISTANCE		20
+# define COLISION_DISTANCE		10
 # define MP_CUBE				8
 # define MP_SIDE				8
 
@@ -96,12 +102,13 @@ typedef struct s_ray
 	int				i;			//iter
 	int				mx;			//map x
 	int				my;			//map y
-	int				mx_sub_xo;	//map x - xo
-	int				my_sub_yo;	//map y - yo
-	int				mx_add_xo;	//map x + xo
-	int				my_add_yo;	//map y + yo
+	int				mx_sxo;		//map x - xo
+	int				my_syo;		//map y - yo
+	int				mx_axo;		//map x + xo
+	int				my_ayo;		//map y + yo
 	int				mp;			//map pos (ver si la vamos a necesitar)
 	int				dof;		//depth of field
+	int				door;		//door_flag
 	float			rx;			//ray x
 	float			ry;			//ray y
 	float			ra;			//ray angle
@@ -161,6 +168,7 @@ typedef struct s_mlx
 	void	*mlx_window;
 	t_img	img;
 	t_img	img_wall[4];
+	t_img	img_door;
 }				t_mlx;
 
 typedef struct s_cub3d
@@ -219,5 +227,6 @@ void	change_cam(t_cub3d	*cub3d, int side, float sensitivity);
 
 void	minimap(t_cub3d	*cub3d);
 void	put_backgrownd(t_cub3d	*cub3d);
+void	open_door(t_cub3d *cub3d, int key);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 17:18:10 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/04 03:48:51 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/09 23:57:28 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ int	controls_mouse(int key, int x, int y, t_cub3d *cub3d)
 		return (1);
 	(void)x;
 	(void)y;
+	if (key == 1)
+	{
+		open_door(cub3d, key);
+		put_frame(cub3d);
+	}
 	if (key == 4)
 		change_cam(cub3d, XK_Left, SENSITIVITY);
 	if (key == 5)

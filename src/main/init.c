@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:24:36 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/08 01:49:09 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/09 20:20:30 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void	load_sprites(char **map, t_mlx	*mlx)
 			(mlx->img_wall[i].img_instance, &mlx->img_wall[i].bppx,
 				&mlx->img_wall[i].line_length, &mlx->img_wall[i].endian);
 	}
+	mlx->img_door.img_instance = mlx_xpm_file_to_image
+		(mlx->mlx_instance, "./resources/door_closed.xpm", &x, &x);
+	mlx->img_door.addr = mlx_get_data_addr
+		(mlx->img_door.img_instance, &mlx->img_door.bppx,
+			&mlx->img_door.line_length, &mlx->img_door.endian);
 }
 
 void	start_cam(t_cub3d	*cub3d)

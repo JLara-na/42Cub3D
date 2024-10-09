@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 03:54:09 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/08 02:55:32 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:43:11 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ int	get_pixel_img(t_img *img, int x, int y)
 {
 	if (x > 64 || y > 64)
 		return (0xFF0000);
-	return (*(unsigned int *)((img->addr + \
-	(y * img->line_length) + (x * img->bppx / 8))));
+	return (*(unsigned int *)((img->addr + (y * img->line_length)
+			+ (x * img->bppx / 8))));
 }

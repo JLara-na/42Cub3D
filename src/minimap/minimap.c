@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:17:08 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/08 00:17:37 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/09 21:37:37 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ void	minimap_wall(void	*data, int x, int y)
 		if (cub3d->cam.map_c[y][x] == '0')
 			square_wall(cub3d, x - mpx + MP_SIDE + 2,
 				y - mpy + MP_SIDE + 2, 0xFFFFFF);
+		if (cub3d->cam.map_c[y][x] == 'D')
+			square_wall(cub3d, x - mpx + MP_SIDE + 2,
+				y - mpy + MP_SIDE + 2, 0x0000FF);
 		if (cub3d->cam.map_c[y][x] == 'D')
 			square_wall(cub3d, x - mpx + MP_SIDE + 2,
 				y - mpy + MP_SIDE + 2, 0x0000FF);

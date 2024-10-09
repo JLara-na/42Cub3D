@@ -6,39 +6,39 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 03:40:05 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/07 17:43:12 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/10 00:21:31 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-void	collision_init(t_cub3d	*cub3d, t_ray	*collision, int key)
+void	collision_init(t_cub3d	*cub3d, t_ray	*collision, int key, int c)
 {
 	if (cub3d->cam.dx < 0)
-		collision->xo = -COLISION_DISTANCE;
+		collision->xo = -c;
 	else
-		collision->xo = COLISION_DISTANCE;
+		collision->xo = c;
 	if (cub3d->cam.dy < 0)
-		collision->yo = -COLISION_DISTANCE;
+		collision->yo = -c;
 	else
-		collision->yo = COLISION_DISTANCE;
+		collision->yo = c;
 	if (key == XK_a || key == XK_d)
 	{
 		if (cub3d->cam.dy < 0)
-			collision->xo = -COLISION_DISTANCE;
+			collision->xo = -c;
 		else
-			collision->xo = COLISION_DISTANCE;
+			collision->xo = c;
 		if (cub3d->cam.dx < 0)
-			collision->yo = -COLISION_DISTANCE;
+			collision->yo = -c;
 		else
-			collision->yo = COLISION_DISTANCE;
+			collision->yo = c;
 	}
 	collision->mx = cub3d->cam.x / 64;
-	collision->mx_add_xo = (cub3d->cam.x + collision->xo) / 64;
-	collision->mx_sub_xo = (cub3d->cam.x - collision->xo) / 64;
+	collision->mx_axo = (cub3d->cam.x + collision->xo) / 64;
+	collision->mx_sxo = (cub3d->cam.x - collision->xo) / 64;
 	collision->my = cub3d->cam.y / 64;
-	collision->my_add_yo = (cub3d->cam.y + collision->yo) / 64;
-	collision->my_sub_yo = (cub3d->cam.y - collision->yo) / 64;
+	collision->my_ayo = (cub3d->cam.y + collision->yo) / 64;
+	collision->my_syo = (cub3d->cam.y - collision->yo) / 64;
 }
 
 void	move_cam(t_cub3d	*cub3d, int key)
@@ -46,22 +46,22 @@ void	move_cam(t_cub3d	*cub3d, int key)
 	t_ray	c;
 
 	ft_bzero(&c, sizeof(t_ray));
-	collision_init(cub3d, &c, key);
-	if (key == XK_s && get_map(&cub3d->cam, c.mx_sub_xo, c.my) != '1')
+	collision_init(cub3d, &c, key, COLISION_DISTANCE);
+	if (key == XK_s && !ft_strchr("1D", get_map(&cub3d->cam, c.mx_sxo, c.my)))
 		cub3d->cam.x -= cub3d->cam.dx;
-	if (key == XK_s && get_map(&cub3d->cam, c.mx, c.my_sub_yo) != '1')
+	if (key == XK_s && !ft_strchr("1D", get_map(&cub3d->cam, c.mx, c.my_syo)))
 		cub3d->cam.y -= cub3d->cam.dy;
-	if (key == XK_w && get_map(&cub3d->cam, c.mx_add_xo, c.my) != '1')
+	if (key == XK_w && !ft_strchr("1D", get_map(&cub3d->cam, c.mx_axo, c.my)))
 		cub3d->cam.x += cub3d->cam.dx;
-	if (key == XK_w && get_map(&cub3d->cam, c.mx, c.my_add_yo) != '1')
+	if (key == XK_w && !ft_strchr("1D", get_map(&cub3d->cam, c.mx, c.my_ayo)))
 		cub3d->cam.y += cub3d->cam.dy;
-	if (key == XK_d && get_map(&cub3d->cam, c.mx_sub_xo, c.my) != '1')
+	if (key == XK_d && !ft_strchr("1D", get_map(&cub3d->cam, c.mx_sxo, c.my)))
 		cub3d->cam.x -= cub3d->cam.dy;
-	if (key == XK_d && get_map(&cub3d->cam, c.mx, c.my_add_yo) != '1')
+	if (key == XK_d && !ft_strchr("1D", get_map(&cub3d->cam, c.mx, c.my_ayo)))
 		cub3d->cam.y += cub3d->cam.dx;
-	if (key == XK_a && get_map(&cub3d->cam, c.mx_add_xo, c.my) != '1')
+	if (key == XK_a && !ft_strchr("1D", get_map(&cub3d->cam, c.mx_axo, c.my)))
 		cub3d->cam.x += cub3d->cam.dy;
-	if (key == XK_a && get_map(&cub3d->cam, c.mx, c.my_sub_yo) != '1')
+	if (key == XK_a && !ft_strchr("1D", get_map(&cub3d->cam, c.mx, c.my_syo)))
 		cub3d->cam.y -= cub3d->cam.dx;
 }
 
@@ -85,9 +85,39 @@ void	rotate_cam(t_cub3d	*cub3d, int key, float sensitivity)
 	}
 }
 
+void	open_door(t_cub3d *cub3d, int key)
+{
+	t_ray	collision;
+
+	if (key == 1 || key == XK_e)
+	{
+		ft_bzero(&collision, sizeof(t_ray));
+		if (cub3d->cam.dx < 0)
+			collision.xo = -35;
+		else
+			collision.xo = 35;
+		if (cub3d->cam.dy < 0)
+			collision.yo = -35;
+		else
+			collision.yo = 35;
+		collision.mx = cub3d->cam.x / 64;
+		collision.mx_axo = (cub3d->cam.x + collision.xo) / 64;
+		collision.my = cub3d->cam.y / 64;
+		collision.my_ayo = (cub3d->cam.y + collision.yo) / 64;
+		if (ft_strchr("D", get_map(&cub3d->cam, collision.mx_axo,
+					collision.my_ayo)) != NULL)
+			cub3d->cam.map_c[collision.my_ayo][collision.mx_axo] = 'O';
+		else if (ft_strchr("O", get_map(&cub3d->cam, collision.mx_axo,
+					collision.my_ayo)) && get_map(&cub3d->cam, collision.mx,
+				collision.my) != 'O')
+			cub3d->cam.map_c[collision.my_ayo][collision.mx_axo] = 'D';
+	}
+}
+
 void	change_cam(t_cub3d	*cub3d, int key, float sensitivity)
 {
 	move_cam(cub3d, key);
 	rotate_cam(cub3d, key, sensitivity);
+	open_door(cub3d, key);
 	put_frame(cub3d);
 }

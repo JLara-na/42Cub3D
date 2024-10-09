@@ -1,10 +1,10 @@
-NO ./resources/test_wall.xpm
+NO ./resources/test_wall_N.xpm
 
-SO ./resources/test_wall.xpm
+SO ./resources/test_wall_S.xpm
 
-WE ./resources/test_wall.xpm
+WE ./resources/test_wall_W.xpm
 
-EA ./resources/test_wall.xpm
+EA ./resources/test_wall_E.xpm
 
 F 112,121,86
 

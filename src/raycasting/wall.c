@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 03:43:02 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/08 03:17:11 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/09 20:21:20 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	wall_size_and_place(t_cam	*cam, t_ray *ray)
 {
 	ray->lineh = (cam->map_s * W_Y) / ray->tdis;
 	ray->ty_step = 64 / ray->lineh;
+	ray->ty_o = 0;
 	if (ray->lineh > W_Y)
 	{
 		ray->ty_o = (ray->lineh - W_Y) / 2;
@@ -59,12 +60,34 @@ void	print_wall(t_cam *cam, t_mlx *mlx, t_ray *ray)
 		xau = -1;
 		while (++xau < (W_X) / RAY_NUMBER)
 		{
-			if (ray->hdis < ray->vdis)
-				ray->color = get_pixel_img(&mlx->img_wall[NORTH], 64 - ray->tx, ray->ty);
-			else
-				ray->color = get_pixel_img(&mlx->img_wall[NORTH], ray->tx, ray->ty);
-			my_mlx_pixel_put(&mlx->img, xau + ray->i
-				* (W_X / RAY_NUMBER), yau + ray->lineo, ray->color);
+			if (get_map(cam, ray->rx / 64, ray->ry / 64) == '1')
+			{
+				if (ray->hdis < ray->vdis)
+				{
+					if (ray->ra > 0 && ray->ra < PI)
+						ray->color = get_pixel_img(&mlx->img_wall[SOUTH], 64 - ray->tx, ray->ty);
+					else
+						ray->color = get_pixel_img(&mlx->img_wall[NORTH], 64 - ray->tx, ray->ty);
+				}
+				else
+				{
+					if (ray->ra < PI2 || ray->ra > _3PI2)
+						ray->color = get_pixel_img(&mlx->img_wall[EAST], ray->tx, ray->ty);
+					else
+						ray->color = get_pixel_img(&mlx->img_wall[WEST], ray->tx, ray->ty);
+				}
+				my_mlx_pixel_put(&mlx->img, xau + ray->i
+					* (W_X / RAY_NUMBER), yau + ray->lineo, ray->color);
+			}
+			if (get_map(cam, ray->rx / 64, ray->ry / 64) == 'D')
+			{
+				if (ray->hdis < ray->vdis)
+					ray->color = get_pixel_img(&mlx->img_door, 64 - ray->tx, ray->ty);
+				else
+					ray->color = get_pixel_img(&mlx->img_door, ray->tx, ray->ty);
+				my_mlx_pixel_put(&mlx->img, xau + ray->i
+					* (W_X / RAY_NUMBER), yau + ray->lineo, ray->color);
+			}
 		}
 		ray->ty += ray->ty_step;
 	}
