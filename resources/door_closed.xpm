@@ -2,7 +2,7 @@
 static char *out[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 68 1 ",
-"  c #000000",
+"  c #FF000000",
 ". c #0F0F0E",
 "X c #15130F",
 "o c #111110",

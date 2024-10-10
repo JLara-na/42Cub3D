@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/09 23:48:57 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/10 20:06:44 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@
 //-----------------------------------DEFINES----------------------------------//
 
 //42 settings
-// # define W_X					2160
-// # define W_Y					1080
-// # define WH_X					1080
-// # define WH_Y					540
-// # define RAY_NUMBER				2160
+# define W_X					2160
+# define W_Y					1080
+# define WH_X					1080
+# define WH_Y					540
+# define RAY_NUMBER				2160
 
 // # define W_X					1440
 // # define W_Y					720
@@ -43,11 +43,11 @@
 // # define RAY_NUMBER				1440
 
 //Home settings
-# define W_X					960
-# define W_Y					540
-# define WH_X					480
-# define WH_Y					270
-# define RAY_NUMBER				960
+// # define W_X					960
+// # define W_Y					540
+// # define WH_X					480
+// # define WH_Y					270
+// # define RAY_NUMBER				960
 
 # define PI						3.14159265359
 # define _2PI					6.28318530718
@@ -176,6 +176,7 @@ typedef struct s_cub3d
 	t_mlx			mlx;
 	t_cam			cam;
 	t_parse_flags	p_f;
+	int				tics;
 	int				color[2];
 	char			**texture_path;
 }				t_cub3d;

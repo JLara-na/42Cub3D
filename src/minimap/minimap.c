@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:17:08 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/09 21:37:37 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/10 19:06:44 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	map_backgrownd(t_cub3d	*cub3d)
 	int	y;
 
 	y = 10;
-	while (++y < 22 * (MP_SIDE + 1))
+	while (++y < 23 * (MP_SIDE + 1))
 	{
 		x = 10;
 		while (++x < 22 * (MP_SIDE + 1))
@@ -76,11 +76,12 @@ void	minimap_wall(void	*data, int x, int y)
 			square_wall(cub3d, x - mpx + MP_SIDE + 2,
 				y - mpy + MP_SIDE + 2, 0xFF00FF);
 	}
-	square_wall(cub3d, MP_SIDE + 2, MP_SIDE + 2, 0x0000FF00);
 }
 
 void	minimap(t_cub3d	*cub3d)
 {
 	map_backgrownd(cub3d);
 	map_iter_context(cub3d->cam.map_c, minimap_wall, cub3d);
+	square_wall(cub3d, MP_SIDE + 2, MP_SIDE + 2, 0x0000FF00);
+
 }

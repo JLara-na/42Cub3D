@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 03:40:05 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/10 00:21:31 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/10 18:12:56 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,5 @@ void	change_cam(t_cub3d	*cub3d, int key, float sensitivity)
 	move_cam(cub3d, key);
 	rotate_cam(cub3d, key, sensitivity);
 	open_door(cub3d, key);
-	put_frame(cub3d);
+	//put_frame(cub3d);
 }

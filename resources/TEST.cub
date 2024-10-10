@@ -1,10 +1,10 @@
-NO ./resources/test_wall_N.xpm
+NO ./resources/test_wall_W.xpm
 
-SO ./resources/test_wall_S.xpm
+SO ./resources/test_wall_W.xpm
 
 WE ./resources/test_wall_W.xpm
 
-EA ./resources/test_wall_E.xpm
+EA ./resources/test_wall_W.xpm
 
 F 112,121,86
 
@@ -27,7 +27,7 @@ C 255,182,118
        100001    100001 101
       10000001  100000011D1
       100000001100000000101
-111111100000000000000000001
+1111111000000000000D0000001
 1E0000D00000000000000000001
 11111110000000110000000011
       10000001  10000001
