@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/12 14:43:15 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/13 19:49:38 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@
 //-----------------------------------DEFINES----------------------------------//
 
 //42 settings
-// # define W_X					2160
-// # define W_Y					1080
-// # define WH_X					1080
-// # define WH_Y					540
-// # define RAY_NUMBER				2160
+# define W_X					2160
+# define W_Y					1080
+# define WH_X					1080
+# define WH_Y					540
+# define RAY_NUMBER				2160
 
-# define W_X					1440
-# define W_Y					720
-# define WH_X					960
-# define WH_Y					360
-# define RAY_NUMBER				1440
+// # define W_X					1440
+// # define W_Y					720
+// # define WH_X					960
+// # define WH_Y					360
+// # define RAY_NUMBER				1440
 
 //Home settings
 // # define W_X					960
@@ -169,6 +169,7 @@ typedef struct s_mlx
 	t_img	img;
 	t_img	img_wall[4];
 	t_img	img_door;
+	t_img	map;
 }				t_mlx;
 
 typedef struct s_cub3d
@@ -229,5 +230,7 @@ void	change_cam(t_cub3d	*cub3d, int side, float sensitivity);
 void	minimap(t_cub3d	*cub3d);
 void	put_backgrownd(t_cub3d	*cub3d);
 void	open_door(t_cub3d *cub3d, int key);
+
+void	put_img_to_img(t_img *dst, t_img *src, int x, int y);
 
 #endif

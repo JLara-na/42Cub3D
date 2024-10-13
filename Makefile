@@ -6,7 +6,7 @@
 #    By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/27 01:23:47 by jlara-na          #+#    #+#              #
-#    Updated: 2024/10/12 18:15:13 by jlara-na         ###   ########.fr        #
+#    Updated: 2024/10/13 19:24:22 by jlara-na         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -137,6 +137,7 @@ SRC_FILES_B		=		$(SUB_DIR_1_B)main					\
 						$(SUB_DIR_5_1_B)init				\
 						$(SUB_DIR_5_1_B)state_matrix		\
 						$(SUB_DIR_6_B)minimap				\
+						$(SUB_DIR_6_B)utils					\
 
 SRC 			= 		$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 			= 		$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -262,7 +263,6 @@ re_bonus:			fclean_bonus
 			@echo "$(CLEAN_LINE)$(CUSTOM_4)CUB3D_BONUS			$(GREEN)✔ CLEANED, REBUILT & READY TO USE$(DEF_COLOR)"
 
 norminette:
-			@echo "$(CLEAR)"
 			@echo "\n$(YELLOW)SRC FILES	$(YELLOW_B)NORMINETTED\n$(DEF_COLOR)"
 			@norminette $(SRC) $(INCLUDE) | grep -v Norme -B1 || true
 			@echo "\n$(YELLOW)INCLUDE FILES	$(YELLOW_B)NORMINETTED\n$(DEF_COLOR)"

@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:24:36 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/12 15:40:04 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/13 19:27:26 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,15 @@ void	load_sprites(char **map, t_mlx	*mlx)
 				&mlx->img_wall[i].line_length, &mlx->img_wall[i].endian);
 	}
 	mlx->img_door.img_instance = mlx_xpm_file_to_image
-		(mlx->mlx_instance, "./cub3D_std/resources/door_closed.xpm", &x, &x);
+		(mlx->mlx_instance, "./cub3D_bonus/resources/door_closed.xpm", &x, &x);
 	mlx->img_door.addr = mlx_get_data_addr
 		(mlx->img_door.img_instance, &mlx->img_door.bppx,
 			&mlx->img_door.line_length, &mlx->img_door.endian);
+	mlx->map.img_instance = mlx_xpm_file_to_image
+		(mlx->mlx_instance, "./cub3D_bonus/resources/map_border.xpm", &x, &x);
+	mlx->map.addr = mlx_get_data_addr
+		(mlx->map.img_instance, &mlx->map.bppx,
+			&mlx->map.line_length, &mlx->map.endian);
 }
 
 void	start_cam(t_cub3d	*cub3d)
