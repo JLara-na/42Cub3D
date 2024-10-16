@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 03:31:13 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/08 03:13:48 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/15 18:40:19 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	raycast_frame(t_cam	*cam, t_mlx	*mlx)
 		fish_eye_fix(cam, &r);
 		wall_size_and_place(cam, &r);
 		print_wall(cam, mlx, &r);
+		print_floor_ceiling(cam, mlx, &r);
 		r.ra += r.dra;
 		if (r.ra < 0)
 			r.ra += _2PI;

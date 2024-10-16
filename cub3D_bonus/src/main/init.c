@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:24:36 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/13 19:27:26 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/15 01:36:56 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,16 @@ void	load_sprites(char **map, t_mlx	*mlx)
 	mlx->map.addr = mlx_get_data_addr
 		(mlx->map.img_instance, &mlx->map.bppx,
 			&mlx->map.line_length, &mlx->map.endian);
+	mlx->floor.img_instance = mlx_xpm_file_to_image
+		(mlx->mlx_instance, "./cub3D_bonus/resources/map_border.xpm", &x, &x);
+	mlx->floor.addr = mlx_get_data_addr
+		(mlx->floor.img_instance, &mlx->floor.bppx,
+			&mlx->floor.line_length, &mlx->floor.endian);
+	mlx->ceiling.img_instance = mlx_xpm_file_to_image
+		(mlx->mlx_instance, "./cub3D_bonus/resources/test_wall_N.xpm", &x, &x);
+	mlx->ceiling.addr = mlx_get_data_addr
+		(mlx->ceiling.img_instance, &mlx->ceiling.bppx,
+			&mlx->ceiling.line_length, &mlx->ceiling.endian);
 }
 
 void	start_cam(t_cub3d	*cub3d)

@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:18:55 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/13 20:00:38 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/14 18:41:30 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,22 @@ void	put_img_to_img(t_img *dst, t_img *src, int x, int y)
 		if (i % 6 == 0)
 			b++;
 	}
+}
+
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+{
+	char	*dst;
+
+	if (x < 0 || x >= W_X || y < 0 || y >= W_Y)
+		return ;
+	dst = img->addr + (y * img->line_length + x * (img->bppx / 8));
+	*(unsigned int *)dst = color;
+}
+
+int	get_pixel_img(t_img *img, int x, int y)
+{
+	if (x > 64 || y > 64)
+		return (0xFF0000);
+	return (*(unsigned int *)((img->addr + (y * img->line_length)
+			+ (x * img->bppx / 8))));
 }

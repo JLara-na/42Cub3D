@@ -1,14 +1,14 @@
-NO ./cub3D_bonus/resources/test_wall_N.xpm
+NO ./cub3D_bonus/resources/cobblestone.xpm
 
-SO ./cub3D_bonus/resources/test_wall_S.xpm
+SO ./cub3D_bonus/resources/cobblestone.xpm
 
-WE ./cub3D_bonus/resources/test_wall_W.xpm
+WE ./cub3D_bonus/resources/cobblestone.xpm
 
-EA ./cub3D_bonus/resources/test_wall_E.xpm
+EA ./cub3D_bonus/resources/cobblestone.xpm
 
-F 112,121,86
+F 50,50,50
 
-C 255,182,118
+C 20,20,20
 
 
 1111111111111

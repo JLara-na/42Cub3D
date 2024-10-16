@@ -6,7 +6,7 @@
 #    By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/27 01:23:47 by jlara-na          #+#    #+#              #
-#    Updated: 2024/10/13 19:24:22 by jlara-na         ###   ########.fr        #
+#    Updated: 2024/10/14 18:55:51 by jlara-na         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -127,6 +127,7 @@ SRC_FILES_B		=		$(SUB_DIR_1_B)main					\
 						$(SUB_DIR_3_B)raycast_frame			\
 						$(SUB_DIR_3_B)utils					\
 						$(SUB_DIR_3_B)wall					\
+						$(SUB_DIR_3_B)floor					\
 						$(SUB_DIR_4_B)cam_movements			\
 						$(SUB_DIR_5_B)file_parse			\
 						$(SUB_DIR_5_B)map_checker			\

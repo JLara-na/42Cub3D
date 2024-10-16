@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/13 19:49:38 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/15 18:40:26 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,24 @@
 //-----------------------------------DEFINES----------------------------------//
 
 //42 settings
-# define W_X					2160
-# define W_Y					1080
-# define WH_X					1080
-# define WH_Y					540
-# define RAY_NUMBER				2160
+// # define W_X					2160
+// # define W_Y					1080
+// # define WH_X					1080
+// # define WH_Y					540
+// # define RAY_NUMBER				2160
 
-// # define W_X					1440
-// # define W_Y					720
-// # define WH_X					960
-// # define WH_Y					360
-// # define RAY_NUMBER				1440
+# define W_X					1440
+# define W_Y					720
+# define WH_X					960
+# define WH_Y					360
+# define RAY_NUMBER				1440
 
 //Home settings
-// # define W_X					960
-// # define W_Y					540
-// # define WH_X					480
-// # define WH_Y					270
-// # define RAY_NUMBER				960
+// # define W_X					1024
+// # define W_Y					510
+// # define WH_X					512
+// # define WH_Y					255
+// # define RAY_NUMBER				1024
 
 # define PI						3.14159265359
 # define _2PI					6.28318530718
@@ -134,6 +134,8 @@ typedef struct s_ray
 	float			ty_step;	//textura y_step
 	float			tx_o;		//textura x_offset
 	float			ty_o;		//textura y_offset
+	float			dy;
+	float			rafix;
 }				t_ray;
 
 typedef struct s_cam
@@ -168,6 +170,8 @@ typedef struct s_mlx
 	void	*mlx_window;
 	t_img	img;
 	t_img	img_wall[4];
+	t_img	floor;
+	t_img	ceiling;
 	t_img	img_door;
 	t_img	map;
 }				t_mlx;
@@ -201,12 +205,15 @@ void	pick_collision(t_cam *cam, t_ray *ray);
 void	fish_eye_fix(t_cam	*cam, t_ray *ray);
 void	wall_size_and_place(t_cam	*cam, t_ray *ray);
 void	print_wall(t_cam *cam, t_mlx *mlx, t_ray *ray);
+void	print_floor_ceiling(t_cam *cam, t_mlx *mlx, t_ray *ray);
 void	raycast_frame(t_cam	*cam, t_mlx	*mlx);
 
 //----------------------------------UTILS FT----------------------------------//
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 float	pitagoras(float ax, float ay, float bx, float by);
+float	deg_to_rad(float a);
+float	fix_ang(float a);
 int		valid_map_line(char *line);
 int		ft_sarray_size(char	**sarr);
 void	map_iter_context(char **map, void (*f)(void *, int x, int y),
