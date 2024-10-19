@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/12 17:34:06 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/19 20:57:38 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,7 @@ void	put_frame(t_cub3d	*cub3d);
 int		init_all(t_cub3d	*cub3d);
 int		parse(int ac, char	**av, t_cub3d	*cub3d);
 int		map_checker(t_cub3d	*cub3d);
+int		paths_checker(t_cub3d	*cub3d);
 
 //----------------------------------RAYCAST FT--------------------------------//
 

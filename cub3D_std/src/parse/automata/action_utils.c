@@ -6,13 +6,13 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 00:59:43 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/06 00:59:44 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/19 21:06:50 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/cub3d.h"
 
-int	check_color(int c)
+int	check_color(long long int c)
 {
 	return (c >= 0 && c <= 255);
 }

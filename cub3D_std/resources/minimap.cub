@@ -2,9 +2,9 @@ NO ./cub3D_std/resources/test_wall_N.xpm
 
 SO ./cub3D_std/resources/test_wall_S.xpm
 
-WE ./cub3D_std/resources/test_wall_S.xpm
+WE ./cub3D_std/resources/test_wall_W.xpm
 
-EA ./cub3D_std/resources/test_wall_S.xpm
+EA ./cub3D_std/resources/test_wall_E.xpm
 
 F 112,121,86
 

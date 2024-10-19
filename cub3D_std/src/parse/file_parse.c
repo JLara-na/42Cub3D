@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 17:33:46 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/06 20:41:04 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/19 20:50:41 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ int	parse(int ac, char	**av, t_cub3d	*cub3d)
 	if (extract_data(file, cub3d))
 		return (EXIT_FAILURE);
 	ft_free_sarray(file);
+	if (paths_checker(cub3d))
+		return (EXIT_FAILURE);
 	if (map_checker(cub3d))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
