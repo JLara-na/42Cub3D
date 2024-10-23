@@ -1,0 +1,25 @@
+NO ./cub3D_std/resources/textures/letter_n.xpm
+
+SO ./cub3D_std/resources/textures/letter_s.xpm
+
+WE ./cub3D_std/resources/textures/letter_w.xpm
+
+EA ./cub3D_std/resources/textures/letter_e.xpm
+
+F 125,125,125
+
+C 50,50,50
+
+1111111111111
+1000000000001
+1010101010101
+1000000000001
+1010101010101
+1000000000001
+101010N010101
+1000000000001
+1010101010101
+1000000000001
+1010101010101
+1000000000001
+1111111111111

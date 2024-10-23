@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 18:15:13 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/06/27 23:40:49 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/19 21:13:52 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_atoi(const char *str)
 		len++;
 		if ((base > 2147483647 && sign == 1)
 			|| (base > 2147483648 && sign == -1))
-			return (0);
+			return (-1);
 	}
 	return (base * sign);
 }

@@ -1,10 +1,10 @@
-NO ./cub3D_bonus/resources/cobblestone.xpm
+NO ./cub3D_bonus/resources/textures/cobblestone.xpm
 
-SO ./cub3D_bonus/resources/cobblestone.xpm
+SO ./cub3D_bonus/resources/textures/cobblestone.xpm
 
-WE ./cub3D_bonus/resources/cobblestone.xpm
+WE ./cub3D_bonus/resources/textures/cobblestone.xpm
 
-EA ./cub3D_bonus/resources/cobblestone.xpm
+EA ./cub3D_bonus/resources/textures/cobblestone.xpm
 
 F 50,50,50
 
@@ -27,7 +27,7 @@ C 20,20,20
        100001    100001 101
       10000001  100000011D1
       100000001100000000101
-1111111000000000000D0000001
+111111100000000000000000001
 1E0000D00000000000000000001
 11111110000000110000000011
       10000001  10000001

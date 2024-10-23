@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/15 18:40:26 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/19 21:14:37 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@
 //-----------------------------------DEFINES----------------------------------//
 
 //42 settings
-// # define W_X					2160
-// # define W_Y					1080
-// # define WH_X					1080
-// # define WH_Y					540
-// # define RAY_NUMBER				2160
+# define W_X					2160
+# define W_Y					1080
+# define WH_X					1080
+# define WH_Y					540
+# define RAY_NUMBER				2160
 
-# define W_X					1440
-# define W_Y					720
-# define WH_X					960
-# define WH_Y					360
-# define RAY_NUMBER				1440
+// # define W_X					1440
+// # define W_Y					720
+// # define WH_X					960
+// # define WH_Y					360
+// # define RAY_NUMBER				1440
 
 //Home settings
 // # define W_X					1024
@@ -193,6 +193,7 @@ void	terminate(char *msg, int exit_status);
 
 int		parse(int ac, char	**av, t_cub3d	*cub3d);
 int		map_checker(t_cub3d	*cub3d);
+int		paths_checker(t_cub3d	*cub3d);
 
 //----------------------------------RAYCAST FT--------------------------------//
 
