@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/19 21:14:37 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/26 02:41:32 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@
 //-----------------------------------DEFINES----------------------------------//
 
 //42 settings
-# define W_X					2160
-# define W_Y					1080
-# define WH_X					1080
-# define WH_Y					540
-# define RAY_NUMBER				2160
+// # define W_X					2160
+// # define W_Y					1080
+// # define WH_X					1080
+// # define WH_Y					540
+// # define RAY_NUMBER				2160
 
 // # define W_X					1440
 // # define W_Y					720
@@ -43,11 +43,11 @@
 // # define RAY_NUMBER				1440
 
 //Home settings
-// # define W_X					1024
-// # define W_Y					510
-// # define WH_X					512
-// # define WH_Y					255
-// # define RAY_NUMBER				1024
+# define W_X					1024
+# define W_Y					510
+# define WH_X					512
+# define WH_Y					255
+# define RAY_NUMBER				1024
 
 # define PI						3.14159265359
 # define _2PI					6.28318530718
@@ -65,6 +65,17 @@
 # define ERROR_LOCATION			"Error location: "
 # define ERROR_WRITE			"Error write()"
 # define ERROR_MLX_START		"start_mlx() in src/main/main.c:17:9"
+
+# define DOOR_PATH				"./cub3D_bonus/resources/textures/\
+door_closed.xpm"
+# define MAPT_PATH				"./cub3D_bonus/resources/textures/\
+map_border.xpm"
+# define FLOOR_PATH				"./cub3D_bonus/resources/textures/\
+cobblestone.xpm"
+# define CEILING_PATH			"./cub3D_bonus/resources/textures/\
+cobblestone.xpm"
+# define MENU_PATH			"./cub3D_bonus/resources/textures/\
+menu_prueba.xpm"
 
 # define BYE_MSG				"Bye!"
 
@@ -174,6 +185,7 @@ typedef struct s_mlx
 	t_img	ceiling;
 	t_img	img_door;
 	t_img	map;
+	t_img	menu;
 }				t_mlx;
 
 typedef struct s_cub3d
@@ -225,6 +237,10 @@ int		get_pixel_img(t_img *img, int x, int y);
 //--------------------------------HOOK FUNCTIONS------------------------------//
 
 void	loop_and_hooks(t_cub3d	*cub3d);
+int		controls_mouse(int key, int x, int y, t_cub3d *cub3d);
+int		mouse_pointer(int x, int y, t_cub3d *cub3d);
+int		reset_mouse_pos(t_cub3d	*cub3d);
+int		close_w(t_mlx *mlx);
 
 int		controls(int keycode, t_cub3d *cub3d);
 int		menu(t_cub3d *cub3d);
@@ -234,7 +250,6 @@ int		menu(t_cub3d *cub3d);
 void	put_frame(t_cub3d	*cub3d);
 char	get_map(t_cam *cam, int x, int y);
 void	change_cam(t_cub3d	*cub3d, int side, float sensitivity);
-
 void	minimap(t_cub3d	*cub3d);
 void	put_backgrownd(t_cub3d	*cub3d);
 void	open_door(t_cub3d *cub3d, int key);

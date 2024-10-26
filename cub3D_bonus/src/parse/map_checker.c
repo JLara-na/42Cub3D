@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:58:52 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/19 21:25:31 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/25 22:33:56 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	make_square(t_cub3d	*cub3d)
 	size_t	longer;
 
 	i = -1;
-	longer = ft_strlen(cub3d->cam.map_c[i+1]);
+	longer = ft_strlen(cub3d->cam.map_c[0]);
 	while (cub3d->cam.map_c[++i])
 		if (longer < ft_strlen(cub3d->cam.map_c[i]))
 			longer = ft_strlen(cub3d->cam.map_c[i]);

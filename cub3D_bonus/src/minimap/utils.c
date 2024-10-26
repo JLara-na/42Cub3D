@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:18:55 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/16 20:56:01 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/26 02:33:23 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	put_img_to_img(t_img *dst, t_img *src, int x, int y)
 
 	i = 0;
 	b = 0;
-	while (i < 386)
+	while (i < 380)
 	{
 		j = 0;
 		a = 0;
-		while (j < 386)
+		while (j < 380)
 		{
 			my_mlx_pixel_put(dst, x + i, y + j, get_pixel_img(src, b, a));
 			j++;
@@ -42,7 +42,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x < 0 || x >= W_X || y < 0 || y >= W_Y)
+	if (x < 0 || x >= W_X || y < 0 || y >= W_Y || color == (int)0xFF000000)
 		return ;
 	dst = img->addr + (y * img->line_length + x * (img->bppx / 8));
 	*(unsigned int *)dst = color;

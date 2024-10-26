@@ -6,7 +6,7 @@
 #    By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/27 01:23:47 by jlara-na          #+#    #+#              #
-#    Updated: 2024/10/19 21:13:30 by jlara-na         ###   ########.fr        #
+#    Updated: 2024/10/25 22:44:03 by jlara-na         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,6 +123,8 @@ SRC_FILES_B		=		$(SUB_DIR_1_B)main					\
 						$(SUB_DIR_1_B)init					\
 						$(SUB_DIR_1_B)put_frame				\
 						$(SUB_DIR_2_B)loop_and_hooks		\
+						$(SUB_DIR_2_B)keyboard				\
+						$(SUB_DIR_2_B)mouse					\
 						$(SUB_DIR_3_B)cast_ray				\
 						$(SUB_DIR_3_B)pick_collision		\
 						$(SUB_DIR_3_B)raycast_frame			\

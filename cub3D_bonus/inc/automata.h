@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 23:11:21 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/05 22:54:31 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/25 22:31:52 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,11 @@ void		automata_init(t_automata *a, void *data);
 
 //----------------------------------ACTIONS FT--------------------------------//
 
-void	automata_terminate(t_automata	*a, void	*data);
-void	flag_identifier(t_automata	*a, void	*data);
-void	store_path(t_automata	*a, void	*data);
-void	color_identifier(t_automata	*a, void	*data);
-void	store_color(t_automata	*a, void	*data);
-
-int		rgb_ok(char *rgb);
-
-
+void		automata_terminate(t_automata	*a, void	*data);
+void		flag_identifier(t_automata	*a, void	*data);
+void		store_path(t_automata	*a, void	*data);
+void		color_identifier(t_automata	*a, void	*data);
+void		store_color(t_automata	*a, void	*data);
+int			rgb_ok(char *rgb);
 
 #endif

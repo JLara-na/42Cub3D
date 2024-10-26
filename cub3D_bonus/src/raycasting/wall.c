@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 03:43:02 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/13 21:19:13 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/26 00:25:48 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void	draw_wall(t_mlx *mlx, t_ray *ray, int xau, int yau)
 	{
 		if (ray->ra > 0 && ray->ra < PI)
 			ray->color = get_pixel_img(&mlx->img_wall[SOUTH],
-					64 - ray->tx, ray->ty);
+					64 - ray->tx, ray->ty) / 1.000001;
 		else
 			ray->color = get_pixel_img(&mlx->img_wall[NORTH],
-					64 - ray->tx, ray->ty);
+					64 - ray->tx, ray->ty) / 1.000001;
 	}
 	else
 	{

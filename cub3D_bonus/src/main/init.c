@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:24:36 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/23 21:18:56 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/26 02:21:56 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,40 @@ int	start_mlx(t_mlx	*mlx)
 	return (EXIT_SUCCESS);
 }
 
+void	load_static_sprites(t_mlx	*mlx, int *x)
+{
+	mlx->img_door.img_instance = mlx_xpm_file_to_image
+		(mlx->mlx_instance, DOOR_PATH, x, x);
+	mlx->img_door.addr = mlx_get_data_addr
+		(mlx->img_door.img_instance, &mlx->img_door.bppx,
+			&mlx->img_door.line_length, &mlx->img_door.endian);
+	mlx->map.img_instance = mlx_xpm_file_to_image
+		(mlx->mlx_instance, MAPT_PATH, x, x);
+	mlx->map.addr = mlx_get_data_addr
+		(mlx->map.img_instance, &mlx->map.bppx,
+			&mlx->map.line_length, &mlx->map.endian);
+	mlx->floor.img_instance = mlx_xpm_file_to_image
+		(mlx->mlx_instance, FLOOR_PATH, x, x);
+	mlx->floor.addr = mlx_get_data_addr
+		(mlx->floor.img_instance, &mlx->floor.bppx,
+			&mlx->floor.line_length, &mlx->floor.endian);
+	mlx->ceiling.img_instance = mlx_xpm_file_to_image
+		(mlx->mlx_instance, CEILING_PATH, x, x);
+	mlx->ceiling.addr = mlx_get_data_addr
+		(mlx->ceiling.img_instance, &mlx->ceiling.bppx,
+			&mlx->ceiling.line_length, &mlx->ceiling.endian);
+	mlx->menu.img_instance = mlx_xpm_file_to_image
+		(mlx->mlx_instance, MENU_PATH, x, x);
+	mlx->menu.addr = mlx_get_data_addr
+		(mlx->menu.img_instance, &mlx->menu.bppx,
+			&mlx->menu.line_length, &mlx->menu.endian);
+}
+
 void	load_sprites(char **map, t_mlx	*mlx)
 {
 	int	x;
 	int	i;
 
-	x = 64;
 	i = -1;
 	while (++i < 4)
 	{
@@ -42,26 +70,7 @@ void	load_sprites(char **map, t_mlx	*mlx)
 			(mlx->img_wall[i].img_instance, &mlx->img_wall[i].bppx,
 				&mlx->img_wall[i].line_length, &mlx->img_wall[i].endian);
 	}
-	mlx->img_door.img_instance = mlx_xpm_file_to_image
-		(mlx->mlx_instance, "./cub3D_bonus/resources/textures/door_closed.xpm", &x, &x);
-	mlx->img_door.addr = mlx_get_data_addr
-		(mlx->img_door.img_instance, &mlx->img_door.bppx,
-			&mlx->img_door.line_length, &mlx->img_door.endian);
-	mlx->map.img_instance = mlx_xpm_file_to_image
-		(mlx->mlx_instance, "./cub3D_bonus/resources/textures/map_border.xpm", &x, &x);
-	mlx->map.addr = mlx_get_data_addr
-		(mlx->map.img_instance, &mlx->map.bppx,
-			&mlx->map.line_length, &mlx->map.endian);
-	mlx->floor.img_instance = mlx_xpm_file_to_image
-		(mlx->mlx_instance, "./cub3D_bonus/resources/textures/map_border.xpm", &x, &x);
-	mlx->floor.addr = mlx_get_data_addr
-		(mlx->floor.img_instance, &mlx->floor.bppx,
-			&mlx->floor.line_length, &mlx->floor.endian);
-	mlx->ceiling.img_instance = mlx_xpm_file_to_image
-		(mlx->mlx_instance, "./cub3D_bonus/resources/textures/test_wall_N.xpm", &x, &x);
-	mlx->ceiling.addr = mlx_get_data_addr
-		(mlx->ceiling.img_instance, &mlx->ceiling.bppx,
-			&mlx->ceiling.line_length, &mlx->ceiling.endian);
+	load_static_sprites(mlx, &x);
 }
 
 void	start_cam(t_cub3d	*cub3d)

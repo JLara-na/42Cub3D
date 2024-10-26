@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 16:07:21 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/06 01:02:42 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/25 22:30:15 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ char	**ft_add_to_sarray(char	**array, char	*str);
 void	ft_free_sarray(char **array);
 char	*ft_strjoinfree(char *s1, char *s2, int which);
 int		ft_str_end_with(const char *str, const char *end);
-
 
 //LIST FT
 t_list	*ft_lstfind(t_list *lst, t_bool (*f)(void *, void *), void *context);
