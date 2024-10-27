@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/26 02:41:32 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/27 19:17:27 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,24 @@
 // # define WH_Y					540
 // # define RAY_NUMBER				2160
 
-// # define W_X					1440
-// # define W_Y					720
-// # define WH_X					960
-// # define WH_Y					360
-// # define RAY_NUMBER				1440
+# define W_X					1440
+# define W_Y					720
+# define WH_X					960
+# define WH_Y					360
+# define RAY_NUMBER				1440
 
 //Home settings
-# define W_X					1024
-# define W_Y					510
-# define WH_X					512
-# define WH_Y					255
-# define RAY_NUMBER				1024
+// # define W_X					1024
+// # define W_Y					510
+// # define WH_X					512
+// # define WH_Y					255
+// # define RAY_NUMBER				1024
 
 # define PI						3.14159265359
 # define _2PI					6.28318530718
 # define PI2					1.57079632679	//	PI / 2
 # define _3PI2					4.71238898038	//	(3 * PI) / 2
-# define DR						0.0174533	//	One degree in radians
+# define DR						0.0174533		//	One degree in radians
 # define FOV					1.57079632679	//	FOV in radians (90º)
 # define SENSITIVITY			0.05
 # define SENSITIVITYX_CAP		10
@@ -74,8 +74,10 @@ map_border.xpm"
 cobblestone.xpm"
 # define CEILING_PATH			"./cub3D_bonus/resources/textures/\
 cobblestone.xpm"
-# define MENU_PATH			"./cub3D_bonus/resources/textures/\
-menu_prueba.xpm"
+# define MENU_PATH_1			"./cub3D_bonus/resources/textures/\
+menu/menu_play.xpm"
+# define MENU_PATH_2			"./cub3D_bonus/resources/textures/\
+menu/menu_quit.xpm"
 
 # define BYE_MSG				"Bye!"
 
@@ -89,11 +91,15 @@ typedef enum e_cardinal
 	EAST
 }	t_cardinal;
 
-typedef enum e_color_fc
+typedef enum e_static_textures
 {
 	FLOOR,
-	CEILING
-}	t_color_fc;
+	CEILING,
+	DOOR,
+	MAP,
+	MENU_1,
+	MENU_2
+}	t_static_textures;
 
 typedef struct s_parse_flags
 {
@@ -181,6 +187,7 @@ typedef struct s_mlx
 	void	*mlx_window;
 	t_img	img;
 	t_img	img_wall[4];
+	t_img	textures[6];
 	t_img	floor;
 	t_img	ceiling;
 	t_img	img_door;

@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 03:43:02 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/26 00:25:48 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/27 19:19:12 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void	draw_wall(t_mlx *mlx, t_ray *ray, int xau, int yau)
 	{
 		if (ray->ra > 0 && ray->ra < PI)
 			ray->color = get_pixel_img(&mlx->img_wall[SOUTH],
-					64 - ray->tx, ray->ty) / 1.000001;
+					64 - ray->tx, ray->ty);
 		else
 			ray->color = get_pixel_img(&mlx->img_wall[NORTH],
-					64 - ray->tx, ray->ty) / 1.000001;
+					64 - ray->tx, ray->ty);
 	}
 	else
 	{
@@ -73,9 +73,9 @@ void	draw_wall(t_mlx *mlx, t_ray *ray, int xau, int yau)
 void	draw_door(t_mlx *mlx, t_ray *ray, int xau, int yau)
 {
 	if (ray->hdis < ray->vdis)
-		ray->color = get_pixel_img(&mlx->img_door, 64 - ray->tx, ray->ty);
+		ray->color = get_pixel_img(&mlx->textures[DOOR], 64 - ray->tx, ray->ty);
 	else
-		ray->color = get_pixel_img(&mlx->img_door, ray->tx, ray->ty);
+		ray->color = get_pixel_img(&mlx->textures[DOOR], ray->tx, ray->ty);
 	my_mlx_pixel_put(&mlx->img, xau + ray->i
 		* (W_X / RAY_NUMBER), yau + ray->lineo, ray->color);
 }

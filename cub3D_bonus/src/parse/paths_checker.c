@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 21:12:19 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/26 02:16:54 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/27 19:01:09 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ int	paths_checker(t_cub3d	*cub3d)
 		return (1);
 	if (check_path(CEILING_PATH))
 		return (1);
-	if (check_path(MENU_PATH))
+	if (check_path(MENU_PATH_1))
+		return (1);
+	if (check_path(MENU_PATH_2))
 		return (1);
 	return (0);
 }

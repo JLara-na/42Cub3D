@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:24:36 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/26 02:21:56 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/27 19:34:39 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,28 @@ int	start_mlx(t_mlx	*mlx)
 
 void	load_static_sprites(t_mlx	*mlx, int *x)
 {
-	mlx->img_door.img_instance = mlx_xpm_file_to_image
-		(mlx->mlx_instance, DOOR_PATH, x, x);
-	mlx->img_door.addr = mlx_get_data_addr
-		(mlx->img_door.img_instance, &mlx->img_door.bppx,
-			&mlx->img_door.line_length, &mlx->img_door.endian);
-	mlx->map.img_instance = mlx_xpm_file_to_image
-		(mlx->mlx_instance, MAPT_PATH, x, x);
-	mlx->map.addr = mlx_get_data_addr
-		(mlx->map.img_instance, &mlx->map.bppx,
-			&mlx->map.line_length, &mlx->map.endian);
-	mlx->floor.img_instance = mlx_xpm_file_to_image
-		(mlx->mlx_instance, FLOOR_PATH, x, x);
-	mlx->floor.addr = mlx_get_data_addr
-		(mlx->floor.img_instance, &mlx->floor.bppx,
-			&mlx->floor.line_length, &mlx->floor.endian);
-	mlx->ceiling.img_instance = mlx_xpm_file_to_image
-		(mlx->mlx_instance, CEILING_PATH, x, x);
-	mlx->ceiling.addr = mlx_get_data_addr
-		(mlx->ceiling.img_instance, &mlx->ceiling.bppx,
-			&mlx->ceiling.line_length, &mlx->ceiling.endian);
-	mlx->menu.img_instance = mlx_xpm_file_to_image
-		(mlx->mlx_instance, MENU_PATH, x, x);
-	mlx->menu.addr = mlx_get_data_addr
-		(mlx->menu.img_instance, &mlx->menu.bppx,
-			&mlx->menu.line_length, &mlx->menu.endian);
+	int			i;
+	char		**paths;
+
+	paths = malloc(7 * (sizeof(char *)));
+	paths[0] = ft_strdup(FLOOR_PATH);
+	paths[1] = ft_strdup(CEILING_PATH);
+	paths[2] = ft_strdup(DOOR_PATH);
+	paths[3] = ft_strdup(MAPT_PATH);
+	paths[4] = ft_strdup(MENU_PATH_1);
+	paths[5] = ft_strdup(MENU_PATH_2);
+	paths[6] = NULL;
+
+	i = -1;
+	while (++i < 6)
+	{
+		mlx->textures[i].img_instance = mlx_xpm_file_to_image
+			(mlx->mlx_instance, paths[i], x, x);
+		mlx->textures[i].addr = mlx_get_data_addr
+			(mlx->textures[i].img_instance, &mlx->textures[i].bppx,
+				&mlx->textures[i].line_length, &mlx->textures[i].endian);
+	}
+	ft_free_sarray(paths);
 }
 
 void	load_sprites(char **map, t_mlx	*mlx)

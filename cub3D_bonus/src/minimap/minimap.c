@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:17:08 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/13 20:43:23 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/27 19:22:22 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	map_backgrownd(t_cub3d	*cub3d)
 	int	x;
 	int	y;
 
-	put_img_to_img(&cub3d->mlx.img, &cub3d->mlx.map, 20, 20);
+	put_img_to_img(&cub3d->mlx.img, &cub3d->mlx.textures[MAP], 20, 20);
 	y = 50;
 	while (++y < 375)
 	{

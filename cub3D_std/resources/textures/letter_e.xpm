@@ -31,7 +31,7 @@ static char *out[] = {
 "8 c #F9F9F9",
 "9 c gray99",
 "0 c #FDFDFD",
-"q c white",
+"q c black",
 /* pixels */
 "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
 "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
