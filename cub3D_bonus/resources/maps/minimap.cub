@@ -1,10 +1,10 @@
-NO ./cub3D_bonus/resources/textures/test_wall_E.xpm
+NO ./cub3D_bonus/resources/textures/walls/test_wall_E.xpm
 
-SO ./cub3D_bonus/resources/textures/test_wall_E.xpm
+SO ./cub3D_bonus/resources/textures/walls/test_wall_E.xpm
 
-WE ./cub3D_bonus/resources/textures/test_wall_E.xpm
+WE ./cub3D_bonus/resources/textures/walls/test_wall_E.xpm
 
-EA ./cub3D_bonus/resources/textures/test_wall_E.xpm
+EA ./cub3D_bonus/resources/textures/walls/test_wall_E.xpm
 
 F 50,50,50
 

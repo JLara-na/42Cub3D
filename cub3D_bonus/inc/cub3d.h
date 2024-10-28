@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/27 19:17:27 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/10/28 19:38:58 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,12 @@ cobblestone.xpm"
 menu/menu_play.xpm"
 # define MENU_PATH_2			"./cub3D_bonus/resources/textures/\
 menu/menu_quit.xpm"
+# define ANIM_PATH_1			"./cub3D_bonus/resources/textures/walls/\
+test_wall_N.xpm.xpm"
+# define ANIM_PATH_2			"./cub3D_bonus/resources/textures/walls/\
+test_wall_S.xpm.xpm"
+# define ANIM_PATH_3			"./cub3D_bonus/resources/textures/walls/\
+test_wall_W.xpm.xpm"
 
 # define BYE_MSG				"Bye!"
 
