@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 00:59:29 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/07 15:03:02 by jlara-na         ###   ########.fr       */
+/*   Updated: 2025/03/28 18:03:34 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	valid_map_line(char *line)
 {
 	int		i;
 
-	if (!line || ft_samestr(line, "\n"))
+	if (!line)
 		return (0);
 	i = 0;
-	if (ft_chrpos(" 1", line[0]) == -1)
+	if (ft_chrpos(" 1\n", line[0]) == -1)
 		return (0);
 	while (line[i])
 	{

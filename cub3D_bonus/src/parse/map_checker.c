@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:58:52 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/25 22:33:56 by jlara-na         ###   ########.fr       */
+/*   Updated: 2025/03/28 18:22:53 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,18 @@ void	flood_space(t_cub3d	*cub3d)
 	{
 		j = -1;
 		while (cub3d->cam.map_c[i][++j])
+		{
+			if (i == 0 && ft_chrpos(" 1.\n", cub3d->cam.map_c[i][j]) == -1)
+				terminate("No esta bien cerrado", 1);
 			if (cub3d->cam.map_c[i][j] == ' ')
 				the_flood(cub3d->cam.map_c, i, j, size - 1);
+		}
+	}
+	j = -1;
+	while (cub3d->cam.map_c[i - 1][++j])
+	{
+		if (ft_chrpos(" 1.\n", cub3d->cam.map_c[i - 1][j]) == -1)
+			terminate("No esta bien cerrado", 1);
 	}
 }
 
