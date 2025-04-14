@@ -1,14 +1,14 @@
-NO ./cub3D_bonus/resources/textures/cobblestone.xpm
+NO ./cub3D_bonus/resources/textures/walls/prueba.xpm
 
-SO ./cub3D_bonus/resources/textures/cobblestone.xpm
+SO ./cub3D_bonus/resources/textures/walls/prueba2.xpm
 
-WE ./cub3D_bonus/resources/textures/cobblestone.xpm
+WE ./cub3D_bonus/resources/textures/walls/prueba3.xpm
 
-EA ./cub3D_bonus/resources/textures/cobblestone.xpm
+EA ./cub3D_bonus/resources/textures/walls/prueba4.xpm
 
-F 50,50,50
+F 13,3,1
 
-C 20,20,20
+C 3,3,1
 
 
          111111111111

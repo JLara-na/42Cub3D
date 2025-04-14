@@ -6,7 +6,7 @@
 #    By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/27 01:23:47 by jlara-na          #+#    #+#              #
-#    Updated: 2024/10/25 22:44:03 by jlara-na         ###   ########.fr        #
+#    Updated: 2025/04/14 02:37:33 by jlara-na         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,6 +121,7 @@ SRC_FILES		=		$(SUB_DIR_1)main					\
 
 SRC_FILES_B		=		$(SUB_DIR_1_B)main					\
 						$(SUB_DIR_1_B)init					\
+						$(SUB_DIR_1_B)load_sprites			\
 						$(SUB_DIR_1_B)put_frame				\
 						$(SUB_DIR_2_B)loop_and_hooks		\
 						$(SUB_DIR_2_B)keyboard				\

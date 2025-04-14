@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 22:44:08 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/27 21:21:26 by jlara-na         ###   ########.fr       */
+/*   Updated: 2024/12/26 20:25:25 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	controls_mouse_menu(int x, int y, t_cub3d *cub3d)
 	j = y;
 	return (0);
 }
-
 
 /*Hook function containing all key events*/
 int	controls(int keycode, t_cub3d *cub3d)

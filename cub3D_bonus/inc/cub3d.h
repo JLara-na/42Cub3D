@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/28 19:38:58 by jlara-na         ###   ########.fr       */
+/*   Updated: 2025/04/14 02:57:38 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,6 @@
 # define WH_Y					360
 # define RAY_NUMBER				1440
 
-//Home settings
-// # define W_X					1024
-// # define W_Y					510
-// # define WH_X					512
-// # define WH_Y					255
-// # define RAY_NUMBER				1024
-
 # define PI						3.14159265359
 # define _2PI					6.28318530718
 # define PI2					1.57079632679	//	PI / 2
@@ -69,21 +62,41 @@
 # define DOOR_PATH				"./cub3D_bonus/resources/textures/\
 door_closed.xpm"
 # define MAPT_PATH				"./cub3D_bonus/resources/textures/\
-map_border.xpm"
+menu/marco.xpm"
 # define FLOOR_PATH				"./cub3D_bonus/resources/textures/\
-cobblestone.xpm"
+walls/suelo_oscuro.xpm"
 # define CEILING_PATH			"./cub3D_bonus/resources/textures/\
-cobblestone.xpm"
+techo3.xpm"
 # define MENU_PATH_1			"./cub3D_bonus/resources/textures/\
 menu/menu_play.xpm"
 # define MENU_PATH_2			"./cub3D_bonus/resources/textures/\
 menu/menu_quit.xpm"
-# define ANIM_PATH_1			"./cub3D_bonus/resources/textures/walls/\
-test_wall_N.xpm.xpm"
-# define ANIM_PATH_2			"./cub3D_bonus/resources/textures/walls/\
-test_wall_S.xpm.xpm"
-# define ANIM_PATH_3			"./cub3D_bonus/resources/textures/walls/\
-test_wall_W.xpm.xpm"
+# define ANIM_PATH_1			"./cub3D_bonus/resources/textures/\
+animation/torch1.xpm"
+# define ANIM_PATH_2			"./cub3D_bonus/resources/textures/\
+animation/torch2.xpm"
+# define ANIM_PATH_3			"./cub3D_bonus/resources/textures/\
+animation/torch3.xpm"
+# define ANIM_PATH_4			"./cub3D_bonus/resources/textures/\
+animation/torch4.xpm"
+# define ANIM_PATH_5			"./cub3D_bonus/resources/textures/\
+animation/torch5.xpm"
+# define ANIM_PATH_6			"./cub3D_bonus/resources/textures/\
+animation/torch6.xpm"
+# define ANIM_PATH_7			"./cub3D_bonus/resources/textures/\
+animation/torch7.xpm"
+# define ANIM_PATH_8			"./cub3D_bonus/resources/textures/\
+animation/torch8.xpm"
+# define ANIM_PATH_9			"./cub3D_bonus/resources/textures/\
+animation/torch9.xpm"
+# define ANIM_PATH_10			"./cub3D_bonus/resources/textures/\
+animation/torch10.xpm"
+# define ANIM_PATH_11			"./cub3D_bonus/resources/textures/\
+animation/torch11.xpm"
+# define ANIM_PATH_12			"./cub3D_bonus/resources/textures/\
+animation/torch12.xpm"
+# define ANIM_PATH_13			"./cub3D_bonus/resources/textures/\
+animation/torch13.xpm"
 
 # define BYE_MSG				"Bye!"
 
@@ -194,6 +207,7 @@ typedef struct s_mlx
 	t_img	img;
 	t_img	img_wall[4];
 	t_img	textures[6];
+	t_img	animation[13];
 	t_img	floor;
 	t_img	ceiling;
 	t_img	img_door;
@@ -213,9 +227,9 @@ typedef struct s_cub3d
 
 //----------------------------------FUNCTIONS---------------------------------//
 
+void	load_sprites(char **map, t_mlx	*mlx);
 int		init_all(t_cub3d	*cub3d);
 void	terminate(char *msg, int exit_status);
-
 int		parse(int ac, char	**av, t_cub3d	*cub3d);
 int		map_checker(t_cub3d	*cub3d);
 int		paths_checker(t_cub3d	*cub3d);
