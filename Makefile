@@ -6,7 +6,7 @@
 #    By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/27 01:23:47 by jlara-na          #+#    #+#              #
-#    Updated: 2025/04/14 02:37:33 by jlara-na         ###   ########.fr        #
+#    Updated: 2025/04/14 15:17:09 by jlara-na         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ SUB_DIR_6_B		:=		minimap/
 #-----------CMP PARAM------------
 MAKEFLAGS		:=		--no-print-directory
 CC				:=		gcc
-CFLAGS			:=		-g -O3 -Wall -Wextra -Werror -fsanitize=address -lm
+CFLAGS			:=		-g -O3 -Wall -Wextra -Werror -fsanitize=address,leak -lm
 HEADER			:=		-I$(INC_DIR) -I$(LFT_DIR) -I$(MLX_DIR)
 MLXCC			:=		-I mlx -L $(MLX_DIR) -lmlx -lXext -lX11
 MLXCC_B			:=		-I mlx -L $(MLX_DIR_B) -lmlx -lXext -lX11
@@ -117,7 +117,6 @@ SRC_FILES		=		$(SUB_DIR_1)main					\
 						$(SUB_DIR_5_1)evaluate				\
 						$(SUB_DIR_5_1)init					\
 						$(SUB_DIR_5_1)state_matrix			\
-						$(SUB_DIR_6)minimap					\
 
 SRC_FILES_B		=		$(SUB_DIR_1_B)main					\
 						$(SUB_DIR_1_B)init					\

@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 02:33:11 by jlara-na          #+#    #+#             */
-/*   Updated: 2025/04/14 02:58:14 by jlara-na         ###   ########.fr       */
+/*   Updated: 2025/04/14 13:48:07 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	load_static_sprites(t_mlx	*mlx, int *x)
 	{
 		mlx->textures[i].img_instance = mlx_xpm_file_to_image
 			(mlx->mlx_instance, paths[i], x, x);
+		if (mlx->textures[i].img_instance == NULL)
+			terminate("XPM is in a bad formatting", 1);
 		mlx->textures[i].addr = mlx_get_data_addr
 			(mlx->textures[i].img_instance, &mlx->textures[i].bppx,
 				&mlx->textures[i].line_length, &mlx->textures[i].endian);
@@ -46,6 +48,8 @@ void	mlx_animation_sprite(t_mlx	*mlx, int *x, char **paths)
 	{
 		mlx->animation[i].img_instance = mlx_xpm_file_to_image
 			(mlx->mlx_instance, paths[i], x, x);
+		if (mlx->animation[i].img_instance == NULL)
+			terminate("XPM is in a bad formatting", 1);
 		mlx->animation[i].addr = mlx_get_data_addr
 			(mlx->animation[i].img_instance, &mlx->animation[i].bppx,
 				&mlx->animation[i].line_length, &mlx->animation[i].endian);
@@ -85,6 +89,8 @@ void	load_sprites(char **map, t_mlx	*mlx)
 	{
 		mlx->img_wall[i].img_instance = mlx_xpm_file_to_image
 			(mlx->mlx_instance, map[i], &x, &x);
+		if (mlx->img_wall[i].img_instance == NULL)
+			terminate("XPM is in a bad formatting", 1);
 		mlx->img_wall[i].addr = mlx_get_data_addr
 			(mlx->img_wall[i].img_instance, &mlx->img_wall[i].bppx,
 				&mlx->img_wall[i].line_length, &mlx->img_wall[i].endian);

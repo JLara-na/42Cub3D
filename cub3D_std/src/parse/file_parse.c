@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 17:33:46 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/10/19 20:50:41 by jlara-na         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:32:13 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,15 @@ int	parse(int ac, char	**av, t_cub3d	*cub3d)
 	ft_bzero(cub3d, sizeof(t_cub3d));
 	cub3d->texture_path = calloc(5, sizeof(char *));
 	if (ac != 2 || !ft_str_end_with(av[1], ".cub"))
-		return (EXIT_FAILURE);
+		return (printf("Error\nMap needs to be .cub\n"), EXIT_FAILURE);
 	if (store_file(av, &file))
-		return (EXIT_FAILURE);
+		return (printf("Error\nstore_file():error\n"), EXIT_FAILURE);
 	if (extract_data(file, cub3d))
 		return (EXIT_FAILURE);
 	ft_free_sarray(file);
 	if (paths_checker(cub3d))
-		return (EXIT_FAILURE);
+		return (printf("Error\npaths_checker():error\n"), EXIT_FAILURE);
 	if (map_checker(cub3d))
-		return (EXIT_FAILURE);
+		return (printf("Error\nmap_checker():error\n"), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

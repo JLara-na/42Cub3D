@@ -6,7 +6,7 @@
 /*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 23:55:53 by jlara-na          #+#    #+#             */
-/*   Updated: 2025/04/14 02:57:38 by jlara-na         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:19:58 by jlara-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,17 @@
 # define ERROR_MLX_START		"start_mlx() in src/main/main.c:17:9"
 
 # define DOOR_PATH				"./cub3D_bonus/resources/textures/\
-door_closed.xpm"
+walls/puerta.xpm"
 # define MAPT_PATH				"./cub3D_bonus/resources/textures/\
 menu/marco.xpm"
 # define FLOOR_PATH				"./cub3D_bonus/resources/textures/\
-walls/suelo_oscuro.xpm"
+walls/suelo.xpm"
 # define CEILING_PATH			"./cub3D_bonus/resources/textures/\
-techo3.xpm"
+walls/techo.xpm"
 # define MENU_PATH_1			"./cub3D_bonus/resources/textures/\
-menu/menu_play.xpm"
+menu/menu_play_new.xpm"
 # define MENU_PATH_2			"./cub3D_bonus/resources/textures/\
-menu/menu_quit.xpm"
+menu/menu_quit_new.xpm"
 # define ANIM_PATH_1			"./cub3D_bonus/resources/textures/\
 animation/torch1.xpm"
 # define ANIM_PATH_2			"./cub3D_bonus/resources/textures/\
